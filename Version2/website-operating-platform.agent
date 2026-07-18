@@ -1,0 +1,1358 @@
+# PROJECT INIT — WEBSITE OPERATING PLATFORM
+
+Project ID: WOP
+Project Name: Website Operating Platform
+Product Type: Multi-tenant Website-as-a-Service / Website Operating System
+Document Version: 1.0
+Primary Market: Thailand
+Expansion Market: ASEAN
+Default Language: Thai
+Technical Language: English identifiers, API names, database fields and source code
+
+---
+
+## 1. PROJECT SUMMARY
+
+Website Operating Platform คือระบบกลางสำหรับขาย ผลิต ดูแล และต่ออายุเว็บไซต์แบบรายเดือน โดยใช้แนวคิด:
+
+- One codebase
+- Multi-tenant architecture
+- Component-based website assembly
+- Structured content and configuration
+- Package-based features and quotas
+- Recurring subscription revenue
+- Human-reviewed AI-assisted content
+- Version-controlled website publishing
+- Customer, internal staff and partner portals
+
+ระบบต้องรองรับตั้งแต่ Lead เข้าสู่ระบบ จนถึงเว็บไซต์ Live และการดูแลรายเดือน
+
+---
+
+## 2. BUSINESS MODEL
+
+Initial packages:
+
+1. Starter
+   - 500 THB/month
+   - General customer / small business
+   - One-page or 1–3 pages
+   - Basic SEO
+   - Small monthly change quota
+
+2. SME Growth
+   - 999 THB/month
+   - SME
+   - 5–7 pages
+   - Blog/news
+   - Analytics and Search Console
+   - Schema and stronger SEO
+   - 2 monthly change requests
+
+3. Business Pro
+   - 1,999 THB/month
+   - Medium business
+   - 8–12 pages
+   - Optional multilingual support
+   - Multiple customer users
+   - Reports and advanced support
+   - 4 monthly change requests
+
+Commercial rules:
+
+- Default contract term: 12 months
+- Revenue sources:
+  - Monthly subscription
+  - Setup fee
+  - Add-ons
+  - Extra change requests
+  - Domain and email services
+  - Renewal
+  - Partner and reseller revenue
+- Price, tax, currency and package availability may vary by country
+
+---
+
+## 3. PRIMARY USERS
+
+Internal roles:
+
+- Super Admin
+- Management
+- Sales Manager
+- Sales
+- Finance Manager
+- Finance
+- Onboarding Coordinator
+- Content Specialist
+- Website Implementer
+- QA Officer
+- Support Manager
+- Support Agent
+- Partner Manager
+
+External roles:
+
+- Customer Owner
+- Customer Editor
+- Customer Approver
+- Partner / Reseller
+- Public visitor
+- Token-based quotation viewer
+- Token-based contract signer
+- Token-based website reviewer
+
+Authorization model:
+
+- RBAC
+- Deny by default
+- Scope-aware authorization:
+  - platform
+  - country
+  - legal entity
+  - organization
+  - tenant
+  - team
+  - assigned record
+  - partner portfolio
+  - self
+
+UI visibility is not authorization.
+All permission and scope checks must be enforced server-side.
+
+---
+
+## 4. MULTI-TENANT HIERARCHY
+
+Customer Account
+→ Organization
+→ Tenant
+→ Website
+
+Definitions:
+
+- Customer Account: ผู้ซื้อหรือบัญชีลูกค้า
+- Organization: บริษัทหรือนิติบุคคล
+- Tenant: พื้นที่ข้อมูลและสิทธิ์ของบริการหนึ่งชุด
+- Website: เว็บไซต์หนึ่งแห่งภายใต้ Tenant
+
+Rules:
+
+- Transactional customer data must include tenant scope
+- Cross-tenant access is forbidden unless explicitly authorized
+- Users may belong to multiple organizations or tenants
+- Tenant switcher is shown only when the user has access to multiple tenants
+- Country-specific pricing, tax, language and timezone must be configurable
+
+---
+
+## 5. END-TO-END BUSINESS FLOW
+
+Lead Created
+→ Qualification
+→ Quotation Draft
+→ Quotation Approval
+→ Quotation Sent
+→ Customer Accepts
+→ Contract Created
+→ Contract Accepted
+→ Contract Active
+→ Subscription Created
+→ Payment or Activation Approval
+→ Subscription Active
+→ Onboarding Created
+→ Customer Completes Intake
+→ Readiness Score Calculated
+→ Readiness Approved
+→ Production Job Created
+→ Blueprint Selected
+→ AI Content Draft
+→ Human Content Review
+→ Website Assembly
+→ Website Version Created
+→ Internal QA
+→ Customer Preview
+→ Consolidated Feedback
+→ Revision
+→ Customer Approval
+→ Domain / DNS / SSL Setup
+→ Production Deployment
+→ Website Live
+→ Monthly Support
+→ Billing
+→ Renewal / Upgrade / Downgrade / Cancellation
+
+---
+
+## 6. READINESS MODEL
+
+Readiness score:
+
+- 80–100: Ready
+- 60–79: Conditional
+- Below 60: Not Ready
+
+Rules:
+
+- Missing critical fields can block production regardless of score
+- Manual readiness override requires approval and reason
+- Readiness result must record:
+  - overall score
+  - state
+  - category scores
+  - missing critical fields
+  - override reason
+  - override approver
+
+---
+
+## 7. CORE STATE MACHINES
+
+### Contract
+
+Draft
+→ Pending Approval
+→ Sent
+→ Accepted
+→ Active
+→ Expiring
+→ Renewed
+→ Expired
+
+Alternative terminal states:
+
+- Cancelled
+- Terminated
+
+### Subscription
+
+Pending
+→ Trial or Active
+→ Past Due
+→ Suspended
+→ Reactivated
+
+Terminal states:
+
+- Cancelled
+- Expired
+- Terminated
+
+### Onboarding
+
+Created
+→ Invitation Sent
+→ Intake Started
+→ Intake Submitted
+→ Information Review
+→ More Information Required
+→ Ready for Production
+→ Completed
+
+Terminal states:
+
+- Cancelled
+
+### Production Job
+
+Queued
+→ Intake Review
+→ Content Drafting
+→ Content Review
+→ Website Assembly
+→ Internal QA
+→ Client Review
+→ Revision
+→ Final Approval
+→ Domain Setup
+→ Deploying
+→ Live
+
+Alternative states:
+
+- On Hold
+- Cancelled
+
+### Ticket
+
+New
+→ Assigned
+→ In Progress
+→ Waiting for Customer
+→ QA
+→ Completed
+→ Closed
+
+Alternative:
+
+- Reopened
+- Cancelled
+
+### Invoice
+
+Draft
+→ Issued
+→ Partially Paid
+→ Paid
+
+Alternative:
+
+- Overdue
+- Cancelled
+- Refunded
+
+---
+
+## 8. CORE MODULES
+
+### Authentication and Identity
+
+- Login
+- MFA
+- Password reset
+- Session management
+- User invitation
+- Roles
+- Permissions
+- Scope assignment
+- Audit log
+
+### CRM
+
+- Lead capture
+- Lead assignment
+- Lead activities
+- Qualification
+- Pipeline
+- Lead conversion
+- Partner attribution
+
+### Quotation and Contract
+
+- Quotation items
+- Discounts
+- Approval flow
+- Revisions
+- Customer acceptance
+- Contract versioning
+- Contract activation
+- Termination and renewal
+
+### Product and Package
+
+- Products
+- Packages
+- Features
+- Quotas
+- Country pricing
+- Promotions
+- Add-ons
+- Versioned package configuration
+
+### Subscription and Billing
+
+- Subscription activation
+- Package snapshot
+- Feature snapshot
+- Billing cycle
+- Commitment period
+- Upgrade
+- Downgrade
+- Renewal
+- Suspension
+- Invoice
+- Payment
+- Refund
+- Aging
+- Collection
+
+### Onboarding
+
+- Onboarding case
+- Intake form
+- Intake question
+- Intake response
+- Media upload
+- Readiness scoring
+- Missing-information request
+- Production approval
+
+### Website Factory
+
+- Industry
+- Blueprint
+- Blueprint pages
+- Blueprint sections
+- Component library
+- Component versions
+- Theme
+- Theme versions
+- Package compatibility
+- Country compatibility
+
+### AI Content
+
+- Content generation
+- Rewrite
+- Translation
+- Page generation
+- Section generation
+- Prompt and model logging
+- Token and cost logging
+- Human review
+- Rejection and regeneration
+
+### Production
+
+- Production job
+- Assignment
+- Due date
+- Priority
+- Activity history
+- Website assembly
+- Page builder
+- Version creation
+- Preview
+
+### QA and Review
+
+- QA template
+- QA item
+- QA run
+- QA result
+- Severity
+- Evidence
+- Customer review session
+- Section comment
+- Consolidated feedback
+- Approval
+
+### Domain and Deployment
+
+- Domain ownership
+- DNS verification
+- SSL provisioning
+- Staging deployment
+- Production deployment
+- Deployment history
+- Rollback
+
+### Support
+
+- Ticket
+- Ticket activity
+- Assignment
+- SLA
+- Monthly quota
+- Out-of-scope estimate
+- Customer approval
+- Reopen policy
+
+### Partner
+
+- Partner
+- Reseller
+- White label
+- Partner users
+- Partner leads
+- Partner customers
+- Attribution
+- Commission rule
+- Commission
+- Payout
+
+### Reporting
+
+- Sales funnel
+- Conversion
+- MRR
+- ARR
+- Revenue
+- Aging
+- Subscription churn
+- Onboarding lead time
+- Production lead time
+- QA first-pass rate
+- Deployment success rate
+- Ticket SLA
+- Partner performance
+
+---
+
+## 9. WEBSITE DATA MODEL
+
+Website content must not be hard-coded per customer.
+
+Website variation is produced from:
+
+- structured content
+- media
+- theme tokens
+- selected components
+- component order
+- component variant
+- package feature flags
+- language
+- country configuration
+
+Core hierarchy:
+
+Website
+→ Pages
+→ Page Sections
+→ Component Version
+→ Structured Content
+→ Style Configuration
+
+Publishing model:
+
+Draft Configuration
+→ Immutable Website Version
+→ QA
+→ Customer Approval
+→ Deployment
+→ Published Version
+
+Rules:
+
+- Published versions are immutable
+- Editing a published website creates a new draft/version
+- Rollback must point to a previously successful version
+- Component deprecation must not break existing websites
+- Published component versions must remain renderable
+
+---
+
+## 10. CORE ENTITIES
+
+Identity:
+
+- users
+- roles
+- permissions
+- role_permissions
+- user_role_assignments
+- teams
+- team_members
+- audit_logs
+
+Customer:
+
+- customers
+- customer_contacts
+- organizations
+- tenants
+
+CRM and Sales:
+
+- leads
+- lead_activities
+- quotations
+- quotation_items
+- contracts
+- contract_versions
+
+Product and Subscription:
+
+- products
+- packages
+- package_features
+- country_prices
+- promotions
+- subscriptions
+- subscription_history
+
+Billing:
+
+- invoices
+- invoice_items
+- payments
+- refunds
+
+Onboarding:
+
+- onboarding_cases
+- intake_forms
+- intake_questions
+- intake_responses
+
+Website Factory:
+
+- industries
+- blueprints
+- blueprint_pages
+- blueprint_sections
+- components
+- component_versions
+- themes
+- theme_versions
+
+Website:
+
+- websites
+- website_languages
+- pages
+- page_translations
+- page_sections
+- website_versions
+- media_files
+
+Production:
+
+- production_jobs
+- production_activities
+- ai_generations
+
+QA and Review:
+
+- qa_templates
+- qa_items
+- qa_runs
+- qa_results
+- review_sessions
+- review_comments
+- approvals
+
+Deployment:
+
+- domains
+- deployments
+
+Support:
+
+- support_quotas
+- tickets
+- ticket_activities
+- add_on_orders
+
+Partner:
+
+- partners
+- partner_users
+- partner_customers
+- commission_rules
+- commissions
+
+System:
+
+- countries
+- languages
+- notifications
+- notification_templates
+- system_settings
+
+---
+
+## 11. API STANDARD
+
+Specification format:
+
+- OpenAPI 3.1
+- Base path: /api/v1
+- JSON request and response
+- UUID identifiers
+- ISO 8601 timestamps in UTC
+- ISO 4217 currency codes
+
+Authentication:
+
+- Bearer JWT
+- Refresh token
+- MFA for privileged roles
+
+Required headers:
+
+- Authorization: Bearer <token>
+- X-Tenant-ID: required for tenant-scoped endpoints
+- X-Request-ID: optional request tracing
+- Idempotency-Key: required for non-repeatable financial and deployment actions
+
+Pagination:
+
+- page
+- pageSize
+- sort
+- q
+
+Error response:
+
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Human-readable message",
+    "field": "optional.field",
+    "metadata": {}
+  },
+  "requestId": "request-id",
+  "timestamp": "ISO-8601"
+}
+
+API rules:
+
+- Validate permission and scope on every protected request
+- Never trust X-Tenant-ID without membership validation
+- All irreversible actions require audit logs
+- State transitions must be validated by domain rules
+- Financial operations must be idempotent
+- Payment webhooks must verify signature and event ID
+- Published versions and issued financial documents are immutable
+- Use optimistic locking or version numbers for mutable drafts
+
+---
+
+## 12. UI PORTALS
+
+### Internal Back Office
+
+Base route: /admin
+
+Main areas:
+
+- Dashboard
+- My Work
+- CRM & Sales
+- Customers
+- Subscription
+- Billing
+- Onboarding
+- Production
+- Content Review
+- Website Builder
+- QA
+- Customer Review
+- Domain
+- Deployment
+- Support
+- Partner
+- Reports
+- Platform Administration
+
+### Customer Portal
+
+Base route: /portal
+
+Main areas:
+
+- Dashboard
+- Tasks
+- Onboarding
+- My Website
+- Preview
+- Content editing
+- Review and approval
+- Subscription
+- Billing
+- Support tickets
+- Organization users
+- Settings
+
+### Partner Portal
+
+Base route: /partner
+
+Main areas:
+
+- Dashboard
+- Lead submission
+- Lead status
+- Attributed customers
+- Commissions
+- Payouts
+- White-label settings
+- Partner users
+- Agreement
+
+### Public and Token-based Pages
+
+- /
+- /pricing
+- /solutions/:industry
+- /get-started
+- /request-quote
+- /q/:token
+- /contract/:token
+- /review/:token
+- /pay/:token
+- /receipt/:token
+
+Token-based pages require:
+
+- expiration
+- rate limit
+- audit log
+- secure random token
+- no direct tenant identifier exposure
+
+---
+
+## 13. RECOMMENDED TECH STACK
+
+Frontend:
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS v4
+- shadcn/ui
+- React Hook Form
+- Zod
+- TanStack Query where client-side state is needed
+
+Backend:
+
+Recommended options:
+
+Option A:
+- Next.js API / Route Handlers
+- Service and domain layers
+
+Option B:
+- Node.js
+- NestJS
+- Separate API service
+
+Database:
+
+- PostgreSQL recommended
+- MySQL acceptable if required by existing infrastructure
+- ORM: Prisma or Drizzle
+
+Infrastructure:
+
+- AWS S3-compatible media storage
+- CDN
+- Managed PostgreSQL/MySQL
+- Railway, AWS or equivalent deployment
+- Background job queue
+- Email / LINE / SMS provider
+- Payment provider
+- DNS and SSL provider
+- AI provider abstraction
+
+Observability:
+
+- structured logging
+- request ID
+- error tracking
+- metrics
+- queue monitoring
+- deployment monitoring
+- audit trail
+
+---
+
+## 14. RECOMMENDED CODE STRUCTURE
+
+src/
+├── app/
+│   ├── (auth)/
+│   ├── admin/
+│   ├── portal/
+│   ├── partner/
+│   ├── review/
+│   ├── api/
+│   └── public/
+├── modules/
+│   ├── identity/
+│   ├── crm/
+│   ├── quotation/
+│   ├── contract/
+│   ├── subscription/
+│   ├── billing/
+│   ├── onboarding/
+│   ├── website-factory/
+│   ├── production/
+│   ├── website/
+│   ├── qa/
+│   ├── review/
+│   ├── deployment/
+│   ├── support/
+│   ├── partner/
+│   └── reporting/
+├── components/
+│   ├── ui/
+│   ├── layout/
+│   ├── forms/
+│   ├── tables/
+│   └── website-components/
+├── lib/
+│   ├── auth/
+│   ├── permissions/
+│   ├── tenant/
+│   ├── database/
+│   ├── validation/
+│   ├── errors/
+│   ├── logging/
+│   ├── events/
+│   └── idempotency/
+├── services/
+├── repositories/
+├── jobs/
+├── schemas/
+├── types/
+└── tests/
+
+Module structure:
+
+module/
+├── domain/
+├── application/
+├── infrastructure/
+├── api/
+├── ui/
+├── schemas/
+├── permissions.ts
+└── tests/
+
+---
+
+## 15. DEVELOPMENT PRINCIPLES
+
+- Domain-first
+- Modular monolith for MVP
+- Separate modules clearly enough for future service extraction
+- Server-side authorization
+- Tenant isolation
+- Immutable published records
+- Version every publishable artifact
+- Prefer configuration over customer-specific code
+- Human review required for AI output
+- Audit sensitive operations
+- Idempotent financial and deployment operations
+- Use event-driven jobs for slow processes
+- Avoid direct module-to-module database writes
+- Use service interfaces and domain events
+- Do not place business logic in UI components
+- Do not expose database models directly through APIs
+- Validate all external input
+- Use explicit state transitions
+- Use soft delete only where business recovery is required
+- Financial records should not be physically deleted
+
+---
+
+## 16. SECURITY REQUIREMENTS
+
+Mandatory:
+
+- Password hashing using modern algorithm
+- MFA for privileged roles
+- Secure session and refresh token rotation
+- CSRF protection where cookie authentication is used
+- Rate limiting
+- Brute-force protection
+- Row-level tenant checks
+- Signed upload URLs
+- Malware/file validation for uploads
+- Webhook signature validation
+- Sensitive data encryption
+- Audit logs for:
+  - login risk events
+  - role changes
+  - user suspension
+  - quotation approval
+  - contract activation
+  - subscription changes
+  - invoice issue
+  - refund
+  - readiness override
+  - QA override
+  - website approval
+  - deployment
+  - rollback
+  - commission approval
+  - payout
+
+Separation of duties:
+
+- Quotation requester cannot approve own exception
+- Invoice creator should not be sole issuer/void approver
+- Refund requester cannot approve own refund
+- Website implementer cannot approve own QA
+- Customer editor and customer approver should be separate where possible
+- Commission rule editor cannot approve payout
+- Payout approver cannot record the same payout
+
+---
+
+## 17. NON-FUNCTIONAL REQUIREMENTS
+
+Performance:
+
+- Normal API p95 target below 500 ms
+- Dashboard queries may use cached aggregates
+- Large reports should run asynchronously
+- Media uploads must use presigned URLs
+- Website rendering should use static generation, ISR or CDN caching
+
+Availability:
+
+- Production platform target: 99.9%
+- Public customer websites must degrade independently from back-office issues
+
+Scalability:
+
+- Multi-country configuration
+- Horizontal application scaling
+- Background job workers
+- Queue-based AI, deployment and notification processing
+
+Reliability:
+
+- Retry external integrations safely
+- Use idempotency for duplicate requests
+- Deployment rollback supported
+- Payment webhook event deduplication
+
+Maintainability:
+
+- Typed APIs
+- OpenAPI source of truth
+- Automated tests
+- Migration scripts
+- Structured modules
+- Feature flags
+
+Accessibility:
+
+- WCAG 2.1 AA target
+- Keyboard navigation
+- Semantic HTML
+- Sufficient contrast
+- Form error association
+
+Localization:
+
+- Thai and English first
+- Country-specific currency, timezone, tax and date formats
+- Website content may support multiple languages
+
+---
+
+## 18. MVP SCOPE
+
+MVP must include:
+
+- Authentication
+- Basic MFA
+- Users, roles and scoped permissions
+- Leads
+- Quotations
+- Contracts
+- Customers, organizations and tenants
+- Packages and pricing
+- Subscriptions
+- Basic invoices and payments
+- Onboarding
+- Intake forms
+- Readiness score
+- Blueprint and component library
+- Production jobs
+- AI content draft
+- Human review
+- Website builder
+- Website versioning
+- QA
+- Customer review and approval
+- Domain status
+- Deployment
+- Support tickets
+- Monthly quota
+- Basic partner attribution
+- Basic commission calculation
+- Core reports
+- Audit logs
+
+Out of scope for MVP:
+
+- Full accounting system
+- Advanced marketing automation
+- Complex ecommerce
+- Multi-vendor marketplace
+- Advanced A/B testing
+- Real-time collaborative website editing
+- Full white-label infrastructure automation
+- Highly customized customer-specific code
+
+---
+
+## 19. BUSINESS RULES
+
+BR-001: Website belongs to exactly one Tenant.
+
+BR-002: Tenant requires an active Subscription to publish.
+
+BR-003: Package price and features must be snapshotted when Subscription starts.
+
+BR-004: Missing critical intake fields block Production.
+
+BR-005: Critical QA issues block customer approval and deployment.
+
+BR-006: Approved Website Version is locked.
+
+BR-007: Feedback after approval creates a new Ticket or revision cycle.
+
+BR-008: Support quota resets by billing period.
+
+BR-009: AI-generated content requires human approval.
+
+BR-010: Deprecated Component cannot be used for new websites but must render old versions.
+
+BR-011: Partner can only access attributed customers.
+
+BR-012: Past Due must pass grace period before suspension.
+
+BR-013: Published configuration cannot be edited directly.
+
+BR-014: Publish, rollback, permission and financial changes require Audit Log.
+
+BR-015: Customer transactional data must be tenant-scoped.
+
+BR-016: Signed Contract versions are immutable.
+
+BR-017: Issued Invoices cannot be edited; correction uses void or credit process.
+
+BR-018: Payment event must be deduplicated by provider event ID.
+
+BR-019: Customer approval must reference an exact Website Version.
+
+BR-020: Production deployment requires:
+- active subscription
+- passed QA
+- customer approval
+- valid domain or temporary domain
+- valid deployable version
+
+BR-021: Rollback requires reason and audit log.
+
+BR-022: Commission becomes payable only after qualifying invoice is paid.
+
+BR-023: Tenant suspension must not delete data.
+
+BR-024: Customer export and termination rules follow contract ownership terms.
+
+BR-025: Country configuration controls pricing, tax, currency, locale and available packages.
+
+---
+
+## 20. TESTING STRATEGY
+
+Required test layers:
+
+- Unit tests
+- Domain state transition tests
+- Permission tests
+- Tenant isolation tests
+- API contract tests
+- Integration tests
+- Database migration tests
+- Payment webhook tests
+- Idempotency tests
+- Website rendering snapshot tests
+- End-to-end tests
+- UAT
+
+Critical E2E scenarios:
+
+1. Lead → Quotation → Contract → Subscription
+2. Subscription → Onboarding → Readiness → Production
+3. Production → QA → Review → Approval → Deployment
+4. Invoice → Payment → Subscription activation
+5. Past due → Grace period → Suspension → Reactivation
+6. Ticket → Quota consumption → Completion
+7. Out-of-scope ticket → Estimate → Approval → Billing
+8. Partner lead → Customer → Paid invoice → Commission
+9. Website publish → New revision → Rollback
+10. Cross-tenant unauthorized access is rejected
+
+---
+
+## 21. DEFINITION OF DONE
+
+A feature is complete only when:
+
+- Acceptance criteria are met
+- Permission code is defined
+- Scope rule is implemented
+- Validation is implemented
+- API documentation is updated
+- Audit behavior is defined
+- Error handling is implemented
+- Unit and integration tests pass
+- Tenant isolation is tested
+- UI supports loading, empty, error and success states
+- Accessibility basics are checked
+- Migration is included when data changes
+- Monitoring/logging is added for critical flow
+- No secret or tenant data is exposed
+
+---
+
+## 22. EXISTING PROJECT ARTIFACTS
+
+Available documentation:
+
+- System Analysis and Logical Design
+- Business Requirement Document
+- Use Case Diagram
+- Use Case Specification
+- Process Flow Diagram
+- Context Diagram
+- DFD Level 0–2
+- Logical ERD
+- Data Dictionary
+- State Transition Diagram
+- Permission Matrix
+- OpenAPI 3.1 Specification
+- UI Sitemap
+- Low-fidelity Wireframes
+
+Expected source files:
+
+- Business_Requirement_Document_Website_Operating_Platform.docx
+- System_Analysis_Logical_Design_Website_Operating_Platform.docx
+- Use_Case_Diagram_Website_Operating_Platform.drawio
+- Process_Flow_Diagram_Website_Operating_Platform.drawio
+- Context_Diagram_Website_Operating_Platform.drawio
+- DFD_Level_0_to_2_Website_Operating_Platform.drawio
+- Logical_ERD_Website_Operating_Platform.drawio
+- Data_Dictionary_Website_Operating_Platform.xlsx
+- State_Transition_Diagram_Website_Operating_Platform.drawio
+- Permission_Matrix_Website_Operating_Platform.xlsx
+- API_Specification_Website_Operating_Platform.openapi.yaml
+- UI_Sitemap_Website_Operating_Platform.drawio
+- Website_Operating_Platform_Low_Fidelity_Wireframes.html
+
+---
+
+## 23. AGENT IMPLEMENTATION RULES
+
+When generating or modifying code:
+
+1. Read this file before making architecture decisions.
+2. Preserve multi-tenant isolation.
+3. Do not add customer-specific hard-coded UI or logic.
+4. Use package, blueprint, component and configuration models.
+5. Use explicit permission codes.
+6. Add server-side scope checks.
+7. Use state transition services instead of direct status updates.
+8. Keep published artifacts immutable.
+9. Add audit events for critical actions.
+10. Add idempotency to financial and deployment writes.
+11. Reuse shared schemas and error types.
+12. Update OpenAPI when API behavior changes.
+13. Update migrations and data dictionary when database structure changes.
+14. Add tests for authorization, state transition and tenant isolation.
+15. Prefer small, reviewable changes.
+16. Do not silently change business rules.
+17. Mark unresolved decisions clearly as TODO or ADR.
+18. Do not expose internal IDs in public token-based pages unless necessary.
+19. Avoid destructive database operations.
+20. Never bypass QA or approval without an explicit override flow.
+
+---
+
+## 24. INITIAL IMPLEMENTATION ORDER
+
+Phase 1 — Foundation
+
+- Repository setup
+- Environment configuration
+- Database
+- Authentication
+- User and role model
+- Tenant context
+- Permission middleware
+- Audit logging
+- Error and response standard
+
+Phase 2 — Commercial
+
+- CRM
+- Quotation
+- Contract
+- Customer
+- Organization
+- Tenant
+- Package
+- Subscription
+- Billing
+
+Phase 3 — Website Factory
+
+- Intake forms
+- Onboarding
+- Readiness
+- Blueprint
+- Component
+- Theme
+- Media
+- Website
+- Page
+- Section
+- Versioning
+
+Phase 4 — Operations
+
+- Production jobs
+- AI content
+- QA
+- Review
+- Approval
+- Domain
+- Deployment
+- Rollback
+
+Phase 5 — Recurring Operations
+
+- Support ticket
+- Quota
+- Estimate
+- Add-on
+- Renewal
+- Partner
+- Commission
+- Reporting
+
+---
+
+## 25. PROJECT SUCCESS METRICS
+
+Business:
+
+- MRR
+- ARR
+- Active subscriptions
+- Lead-to-customer conversion
+- Customer acquisition cost
+- Gross margin
+- Churn
+- Renewal rate
+- Add-on revenue
+- Partner revenue
+
+Operations:
+
+- Onboarding completion rate
+- Average readiness score
+- Time from payment to production
+- Time from production to live
+- First-pass QA rate
+- Revision count
+- Deployment success rate
+- SLA compliance
+- Ticket resolution time
+- Support quota utilization
+
+Product:
+
+- Website uptime
+- Page performance
+- Core Web Vitals
+- SEO readiness
+- Customer approval time
+- Customer satisfaction
+- Self-service completion rate
+
+---
+
+END OF PROJECT CONTEXT

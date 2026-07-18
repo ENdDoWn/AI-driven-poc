@@ -1,0 +1,1013 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-07-18T07:30:00.000Z" agent="ChatGPT" version="24.7.17" type="device">
+  <diagram id="DFD_Level_0_-_Context" name="DFD Level 0 - Context">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t0" value="DFD Level 0 — Website Operating Platform" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="20" width="1100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sys" value="0. Website Operating Platform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=18;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="350" width="400" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="cust" value="Customer / Customer Team" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="180" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="visitor" value="Website Visitor / Lead" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="650" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="staff" value="Internal Staff" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="100" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt" value="Management" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1220" y="110" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="partner" value="Partner / Reseller" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1220" y="650" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pay" value="Payment Gateway" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="420" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ai" value="AI Provider" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1220" y="300" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dns" value="Domain / DNS / SSL Provider" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1220" y="450" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="notif" value="Email / LINE / SMS Provider" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="760" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="analytics" value="Analytics / Monitoring" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="600" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="สมัครบริการ / ข้อมูลธุรกิจ / Feedback / Ticket" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="Quotation / Contract / Preview / Invoice / Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sys" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="Lead / Form Submission" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="visitor" target="sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="เว็บไซต์และข้อมูลบริการ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sys" target="visitor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="Lead / งานผลิต / QA / Support / Billing" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="staff" target="sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="งานที่มอบหมาย / Dashboard / Notification" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sys" target="staff">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="KPI / Revenue / Capacity / Churn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sys" target="mgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="Lead Referral / Customer Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="partner" target="sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="Commission / Customer Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sys" target="partner">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="Payment Request / Refund" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sys" target="pay">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="Payment Result / Webhook" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="pay" target="sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="Prompt / Structured Input" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sys" target="ai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" value="AI Draft / Translation / Metadata" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="ai" target="sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="Domain / DNS / SSL Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sys" target="dns">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="Verification / Provisioning Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="dns" target="sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" value="Notification Payload" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sys" target="notif">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" value="Delivery Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="notif" target="sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" value="Events / Website Metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sys" target="analytics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" value="Traffic / Conversion / Uptime" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="analytics" target="sys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend0" value="Legend&#10;Rectangle = External Entity&#10;Rounded rectangle = System&#10;Arrow = Data Flow" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#F5F5F5;strokeColor=#666666;fontSize=11;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="820" width="250" height="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="DFD_Level_1_-_Overall_Processes" name="DFD Level 1 - Overall Processes">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t1" value="DFD Level 1 — Overall Processes and Data Stores" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="350" y="20" width="1200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cust" value="Customer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="220" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="visitor" value="Website Visitor" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="500" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="staff" value="Internal Staff" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="780" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="partner" value="Partner / Reseller" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1680" y="180" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="pay" value="Payment Gateway" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1680" y="430" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ai" value="AI Provider" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1680" y="650" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dns" value="Domain / DNS / SSL" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1680" y="850" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt" value="Management" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1680" y="1030" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" value="1.0&#10;CRM &amp; Sales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="130" width="220" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="2.0&#10;Contract &amp; Subscription" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="130" width="220" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="3.0&#10;Onboarding &amp; Intake" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="130" width="220" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="4.0&#10;Website Production" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="480" width="220" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" value="5.0&#10;QA &amp; Deployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="650" y="480" width="220" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="p6" value="6.0&#10;Billing &amp; Payment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="480" width="220" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="p7" value="7.0&#10;Support &amp; Change Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="420" y="850" width="220" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="p8" value="8.0&#10;Partner &amp; Reporting" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="850" width="220" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="D1 Lead / Customer / Organization" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="280" y="300" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="D2 Product / Package / Pricing" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="300" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="D3 Contract / Subscription" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="920" y="300" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" value="D4 Intake / Content / Media" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="670" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" value="D5 Website Config / Version" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="570" y="670" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d6" value="D6 Invoice / Payment" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="890" y="670" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d7" value="D7 Ticket / Quota / Add-on" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1050" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d8" value="D8 Partner / Commission" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="760" y="1050" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d9" value="D9 Audit / Analytics / KPI" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="1050" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" value="Lead / Inquiry" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="visitor" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l2" value="Quotation / Offer" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p1" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l3" value="Customer Decision / Organization Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" value="Onboarding Data / Media" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="p3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" value="Preview / Approval" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p5" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l6" value="Ticket / Change Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="p7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l7" value="Payment / Webhook" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="pay" target="p6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l8" value="AI Prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p4" target="ai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l9" value="AI Draft" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="ai" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l10" value="DNS / SSL Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p5" target="dns">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l11" value="DNS / SSL Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="dns" target="p5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l12" value="Referral Lead" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="partner" target="p8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l13" value="Commission / Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p8" target="partner">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l14" value="KPI Dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p8" target="mgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l15" value="Operational Input" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="staff" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l16" value="Production / QA / Support Work" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="staff" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l20" value="Qualified Lead" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p1" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l21" value="Active Subscription" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p2" target="p3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l22" value="Ready Intake" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p3" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l23" value="Website Draft" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p4" target="p5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l24" value="Billing Schedule" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p2" target="p6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l25" value="Subscription Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p6" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l26" value="Approved Change" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p7" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l27" value="Production Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p5" target="p7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l28" value="Partner Lead / Attribution" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p8" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l29" value="Paid Invoice Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p6" target="p8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l30" value="Operational Metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p1" target="p8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l31" value="Production Metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p4" target="p8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="Lead / Customer Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p1" target="d1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="Customer Profile" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d1" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="Package &amp; Price" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d2" target="p1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="Package Feature" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d2" target="p2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="Contract / Subscription" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p2" target="d3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" value="Subscription Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d3" target="p3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s7" value="Intake / Content" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p3" target="d4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s8" value="Content Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d4" target="p4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s9" value="Website Config / Version" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p4" target="d5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s10" value="Version for QA" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d5" target="p5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s11" value="Invoice / Payment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p6" target="d6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s12" value="Billing Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d6" target="p8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s13" value="Ticket / Quota" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p7" target="d7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s14" value="Partner / Commission" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p8" target="d8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s15" value="Audit / KPI" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p8" target="d9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s16" value="Deployment Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p5" target="d9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="DFD_Level_2A_-_Sales_and_Subscription" name="DFD Level 2A - Sales and Subscription">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t2a" value="DFD Level 2A — Sales, Quotation, Contract and Subscription" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="300" y="20" width="1300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="visitor" value="Website Visitor / Lead" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="170" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="sales" value="Sales" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="420" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="cust" value="Customer Owner" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="730" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="pay" value="Payment Gateway" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1650" y="520" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="notif" value="Notification Provider" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1650" y="800" width="210" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p11" value="1.1&#10;Capture Lead" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="130" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p12" value="1.2&#10;Qualify Lead" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="130" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p13" value="1.3&#10;Create Quotation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="130" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p14" value="1.4&#10;Approve / Send Quotation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="130" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p21" value="2.1&#10;Accept Quotation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="470" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p22" value="2.2&#10;Create Contract" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="470" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p23" value="2.3&#10;Create Invoice / Payment Request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="470" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p24" value="2.4&#10;Activate Subscription" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="470" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p25" value="2.5&#10;Create Tenant &amp; Onboarding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="820" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="D1 Lead / Customer" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="300" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="D2 Package / Pricing" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="300" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="D3 Contract / Subscription" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="690" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d6" value="D6 Invoice / Payment" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="980" y="690" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d9" value="D9 Audit Log" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="690" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="Lead Form / Inquiry" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="visitor" target="p11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="Lead Details" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p11" target="d1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="Lead Assignment / Contact" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sales" target="p12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="Qualified Lead" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p12" target="p13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" value="Package / Country Price" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d2" target="p13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" value="Quotation Draft" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p13" target="p14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" value="Approval / Send" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="sales" target="p14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" value="Quotation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p14" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" value="Accept / Reject / Request Change" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="p21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" value="Accepted Quotation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p21" target="p22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a11" value="Customer / Organization Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d1" target="p22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a12" value="Contract Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p22" target="d3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a13" value="Contract for Acceptance" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p22" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a14" value="Accepted Contract" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="p23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a15" value="Invoice / Payment Link" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p23" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a16" value="Payment Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p23" target="pay">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a17" value="Payment Result / Webhook" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="pay" target="p24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a18" value="Invoice / Payment Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p23" target="d6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a19" value="Activate Subscription" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p24" target="d3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a20" value="Subscription Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p24" target="p25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a21" value="Invitation / Onboarding Link" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p25" target="notif">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a22" value="Delivery Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="notif" target="p25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a23" value="Audit Event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p24" target="d9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="DFD_Level_2B_-_Onboarding_and_Production" name="DFD Level 2B - Onboarding and Production">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t2b" value="DFD Level 2B — Onboarding, Content and Website Production" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="300" y="20" width="1400" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cust" value="Customer Editor / Approver" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="250" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="coord" value="Onboarding Coordinator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="650" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="content" value="Content Specialist" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1730" y="180" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="impl" value="Website Implementer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1730" y="520" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ai" value="AI Provider" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1730" y="860" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p31" value="3.1&#10;Invite Customer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p32" value="3.2&#10;Collect Intake &amp; Media" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p33" value="3.3&#10;Validate Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p34" value="3.4&#10;Calculate Readiness" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p35" value="3.5&#10;Request More Information" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="420" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p41" value="4.1&#10;Create Production Job" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="620" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p42" value="4.2&#10;Select Blueprint &amp; Theme" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="620" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p43" value="4.3&#10;Generate Content Draft" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="620" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p44" value="4.4&#10;Review Content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="620" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p45" value="4.5&#10;Assemble Pages &amp; Sections" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="960" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p46" value="4.6&#10;Create Website Version / Preview" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1050" y="960" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="D3 Subscription" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="300" y="350" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" value="D4 Intake / Content / Media" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="350" width="270" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="D2 Blueprint / Component / Package" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="900" y="350" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" value="D5 Website Config / Version" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="760" y="1160" width="270" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d9" value="D9 Production Metrics / Audit" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1120" y="1160" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" value="Active Subscription" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d3" target="p31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" value="Invitation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p31" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" value="Business Data / Service Data / Media" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="p32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b4" value="Intake Response" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p32" target="d4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b5" value="Submitted Intake" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d4" target="p33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b6" value="Validation Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p33" target="p34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b7" value="Ready" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p34" target="p41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b8" value="Not Ready / Missing Fields" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p34" target="p35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b9" value="Request Missing Data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p35" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b10" value="Coordinator Review / Override" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="coord" target="p34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b11" value="Production Instruction" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="coord" target="p41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b12" value="Production Job" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p41" target="p42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b13" value="Blueprint / Component / Package Feature" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d2" target="p42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b14" value="Selected Blueprint / Theme" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p42" target="p43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b15" value="Structured Prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p43" target="ai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b16" value="AI Draft / Metadata / FAQ" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="ai" target="p43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b17" value="Draft Content" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p43" target="p44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b18" value="Content Review / Approval" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="content" target="p44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b19" value="Approved Content" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p44" target="p45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b20" value="Implementation Action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="impl" target="p45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b21" value="Website Configuration" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p45" target="d5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b22" value="Config Snapshot" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d5" target="p46">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b23" value="Preview URL / Version" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p46" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b24" value="Touch Time / Status / Revision Count" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p46" target="d9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="DFD_Level_2C_-_QA_and_Deployment" name="DFD Level 2C - QA and Deployment">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t2c" value="DFD Level 2C — QA, Customer Review, Domain and Deployment" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="300" y="20" width="1300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="qa" value="QA Officer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="190" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="cust" value="Customer Approver" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="650" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="impl" value="Website Implementer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="920" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dns" value="Domain / DNS / SSL Provider" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1650" y="480" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="deploy" value="Deployment Platform" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1650" y="790" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="notif" value="Notification Provider" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1650" y="1030" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p51" value="5.1&#10;Run Automated QA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p52" value="5.2&#10;Perform Manual QA" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p53" value="5.3&#10;Resolve QA Issues" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p54" value="5.4&#10;Create Review Session" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="500" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p55" value="5.5&#10;Collect Feedback / Revision" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="500" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p56" value="5.6&#10;Approve Version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="500" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p57" value="5.7&#10;Verify Domain / Provision SSL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="500" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p58" value="5.8&#10;Deploy &amp; Smoke Test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="850" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p59" value="5.9&#10;Publish or Rollback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="850" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" value="D5 Website Config / Version" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="320" width="270" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dqa" value="D10 QA Template / Result" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="730" y="320" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ddom" value="D11 Domain / Deployment" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1100" y="320" width="270" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d9" value="D9 Audit / Monitoring" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="950" y="1050" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" value="Version for QA" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d5" target="p51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="Automated Findings" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p51" target="dqa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="QA Checklist / Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="qa" target="p52">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="QA Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p52" target="dqa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="Failed / Blocking Issues" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p52" target="p53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" value="Fix Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p53" target="impl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" value="Updated Version" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="impl" target="d5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" value="Passed QA" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p52" target="p54">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" value="Review URL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p54" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c10" value="Feedback / Revision Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="p55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c11" value="Revision Instruction" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p55" target="impl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c12" value="Revised Version" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="impl" target="d5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c13" value="Approval Decision" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="p56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c14" value="Approved Version" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p56" target="p57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c15" value="DNS / SSL Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p57" target="dns">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c16" value="Verification / SSL Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="dns" target="p57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c17" value="Verified Domain" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p57" target="ddom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c18" value="Deploy Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p57" target="p58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c19" value="Version Artifact" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d5" target="p58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c20" value="Deployment Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="deploy" target="p58">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c21" value="Smoke Test Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p58" target="p59">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c22" value="Publish / Rollback Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p59" target="ddom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c23" value="Live Notification" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p59" target="notif">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c24" value="Uptime / Deployment Audit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p59" target="d9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="DFD_Level_2D_-_Billing_and_Support" name="DFD Level 2D - Billing and Support">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t2d" value="DFD Level 2D — Billing, Payment, Support and Change Request" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="300" y="20" width="1400" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="cust" value="Customer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="220" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="fin" value="Finance" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="520" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="support" value="Support Agent / Implementer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="950" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pay" value="Payment Gateway" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1730" y="300" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="notif" value="Notification Provider" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1730" y="650" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p61" value="6.1&#10;Generate Invoice" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p62" value="6.2&#10;Process Payment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p63" value="6.3&#10;Handle Past Due / Grace Period" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p64" value="6.4&#10;Suspend / Reactivate Subscription" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p71" value="7.1&#10;Create Ticket" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="650" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p72" value="7.2&#10;Validate Scope &amp; Quota" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="600" y="650" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p73" value="7.3&#10;Estimate Add-on" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="650" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p74" value="7.4&#10;Implement Change" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1200" y="650" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p75" value="7.5&#10;QA and Publish Change" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="900" y="980" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="D3 Contract / Subscription" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="300" y="350" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d6" value="D6 Invoice / Payment" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="350" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d7" value="D7 Ticket / Quota / Add-on" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="450" y="1160" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" value="D5 Website Config / Version" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="900" y="1160" width="290" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d9" value="D9 Audit / SLA / KPI" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1280" y="1160" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d1f" value="Billing Schedule" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d3" target="p61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d2f" value="Invoice" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p61" target="d6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d3f" value="Invoice / Payment Link" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p61" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d4f" value="Payment Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p62" target="pay">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d5f" value="Payment Result / Webhook" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="pay" target="p62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d6f" value="Payment Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p62" target="d6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d7f" value="Payment Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p62" target="p63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d8f" value="Reminder / Past Due Notice" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p63" target="notif">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d9f" value="Past Due / Paid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p63" target="p64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d10f" value="Subscription Status Update" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p64" target="d3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d11f" value="Ticket / Change Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="p71">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d12f" value="Ticket Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p71" target="d7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d13f" value="Quota / Package / Scope" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d7" target="p72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d14f" value="In-scope Change" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p72" target="p74">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d15f" value="Out-of-scope Change" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p72" target="p73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d16f" value="Estimate / Approval Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p73" target="cust">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d17f" value="Approved Add-on" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="cust" target="p74">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d18f" value="Change Instruction" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="support" target="p74">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d19f" value="New Website Version" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p74" target="d5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d20f" value="Version for QA" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d5" target="p75">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d21f" value="QA / Publish Result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p75" target="d5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d22f" value="Ticket Completion / Quota Deduction" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p75" target="d7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d23f" value="Status Notification" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p75" target="notif">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d24f" value="SLA / Support Metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p75" target="d9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="DFD_Level_2E_-_Partner_and_Reporting" name="DFD Level 2E - Partner and Reporting">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t2e" value="DFD Level 2E — Partner, Commission and Management Reporting" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="300" y="20" width="1300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="partner" value="Partner / Reseller" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="220" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pm" value="Partner Manager" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="600" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fin" value="Finance" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="930" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mgmt" value="Management" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1650" y="600" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p81" value="8.1&#10;Register / Verify Partner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="300" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p82" value="8.2&#10;Capture Referral / Attribution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="650" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p83" value="8.3&#10;Calculate Commission" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p84" value="8.4&#10;Approve / Pay Commission" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1300" y="120" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p85" value="8.5&#10;Aggregate Operational Metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="450" y="650" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p86" value="8.6&#10;Calculate Business KPI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="850" y="650" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="p87" value="8.7&#10;Generate Dashboard / Export" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontSize=14;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+          <mxGeometry x="1250" y="650" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="d8" value="D8 Partner / Agreement / Commission" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="350" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="D1 Lead / Customer" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="850" y="350" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="D3 Subscription" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1130" y="350" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d6" value="D6 Invoice / Payment" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="350" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d7" value="D7 Ticket / Production Metrics" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="450" y="950" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="d9" value="D9 Audit / Analytics / KPI" style="shape=partialRectangle;whiteSpace=wrap;html=1;left=0;right=0;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="950" y="950" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e1p" value="Registration Data / Agreement" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="partner" target="p81">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2p" value="Verification / Partner Account" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p81" target="partner">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3p" value="Partner Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p81" target="d8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4p" value="Referral Lead / Code" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="partner" target="p82">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5p" value="Customer Attribution" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p82" target="d1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6p" value="Attribution Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p82" target="d8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7p" value="Paid Invoice" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d6" target="p83">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8p" value="Subscription / Package" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d3" target="p83">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9p" value="Commission Rule" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d8" target="p83">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10p" value="Commission Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p83" target="d8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11p" value="Approval / Payout Instruction" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="pm" target="p84">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12p" value="Payout Confirmation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="fin" target="p84">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13p" value="Commission Status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p84" target="partner">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14p" value="Lead / Customer Metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d1" target="p85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15p" value="Subscription Metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d3" target="p85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16p" value="Billing Metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d6" target="p85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17p" value="Ticket / Production Metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d7" target="p85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18p" value="Aggregated Metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p85" target="p86">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19p" value="KPI Definition / Calculation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p86" target="d9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20p" value="Dashboard Dataset" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="d9" target="p87">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21p" value="Dashboard / CSV Export" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1" source="p87" target="mgmt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

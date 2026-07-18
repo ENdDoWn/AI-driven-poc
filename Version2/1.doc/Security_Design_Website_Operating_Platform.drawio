@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-07-18T09:30:00.000Z" agent="ChatGPT" version="24.7.17" type="device">
+  <diagram id="ed159902-7d29-4065-b475-c81565d771e1" name="1. Security Overview">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Security Design — Defense in Depth Overview" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#163172;strokeColor=#163172;fontColor=#ffffff;fontStyle=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="2250" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="actors" value="&lt;b&gt;Users &amp; External Systems&lt;/b&gt;&lt;br&gt;Internal Staff&lt;br&gt;Customers&lt;br&gt;Partners&lt;br&gt;Public Visitors&lt;br&gt;Payment / AI / DNS Providers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F68C2C;fontColor=#7C2D12;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="300" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge" value="&lt;b&gt;1. Edge Security&lt;/b&gt;&lt;br&gt;DNS security&lt;br&gt;CDN / WAF&lt;br&gt;DDoS protection&lt;br&gt;TLS 1.2+&lt;br&gt;Bot and rate controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="120" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="&lt;b&gt;2. Identity Security&lt;/b&gt;&lt;br&gt;JWT / session management&lt;br&gt;MFA&lt;br&gt;RBAC&lt;br&gt;Scope-aware access&lt;br&gt;Privileged access review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="920" y="120" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="app" value="&lt;b&gt;3. Application Security&lt;/b&gt;&lt;br&gt;Input validation&lt;br&gt;CSRF / CORS controls&lt;br&gt;Secure headers&lt;br&gt;State transition validation&lt;br&gt;Idempotency" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9EFF8;strokeColor=#244B8A;fontColor=#163172;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="120" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="tenant" value="&lt;b&gt;4. Tenant Isolation&lt;/b&gt;&lt;br&gt;Tenant context&lt;br&gt;Row-level filters&lt;br&gt;Ownership checks&lt;br&gt;No cross-tenant cache keys&lt;br&gt;Scoped file storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="120" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="data" value="&lt;b&gt;5. Data Security&lt;/b&gt;&lt;br&gt;Encryption in transit / at rest&lt;br&gt;Secrets management&lt;br&gt;Backups / PITR&lt;br&gt;Retention / deletion rules&lt;br&gt;PII minimization" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FEF3C7;strokeColor=#D97706;fontColor=#78350F;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="500" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="ops" value="&lt;b&gt;6. Operational Security&lt;/b&gt;&lt;br&gt;Central logs&lt;br&gt;Audit events&lt;br&gt;Alerts&lt;br&gt;Incident response&lt;br&gt;Backup restore tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#475569;fontColor=#1E293B;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="920" y="500" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="sdlc" value="&lt;b&gt;7. Secure SDLC&lt;/b&gt;&lt;br&gt;Code review&lt;br&gt;SAST / dependency scan&lt;br&gt;Secret scan&lt;br&gt;Container scan&lt;br&gt;OpenAPI validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;fontColor=#065F46;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="500" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="governance" value="&lt;b&gt;8. Governance&lt;/b&gt;&lt;br&gt;Least privilege&lt;br&gt;Separation of duties&lt;br&gt;Access review&lt;br&gt;Risk acceptance&lt;br&gt;Security exceptions" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="500" width="340" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="o1" value="HTTPS / signed webhook" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="actors" target="edge">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="o2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="edge" target="identity">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="o3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="identity" target="app">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="o4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="app" target="tenant">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="o5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="tenant" target="data">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="o6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="data" target="ops">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="o7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="ops" target="sdlc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="o8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="sdlc" target="governance">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="principles" value="&lt;b&gt;Core security principles&lt;/b&gt;&lt;br&gt;• Zero trust between layers&lt;br&gt;• Deny by default&lt;br&gt;• Verify identity, role and scope on every request&lt;br&gt;• Immutable audit trail for critical actions&lt;br&gt;• Published and financial records are immutable&lt;br&gt;• Security controls must exist server-side, not only in UI" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="810" width="2020" height="210" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="f5c96139-9da2-49ed-910e-50eec69a9962" name="2. Identity &amp; Access">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Identity, Authentication and Access Control Design" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#163172;strokeColor=#163172;fontColor=#ffffff;fontStyle=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="2250" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="user" value="&lt;b&gt;User&lt;/b&gt;&lt;br&gt;Internal / Customer / Partner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F68C2C;fontColor=#7C2D12;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="70" y="220" width="260" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="login" value="&lt;b&gt;Authentication Service&lt;/b&gt;&lt;br&gt;Email + password&lt;br&gt;MFA challenge&lt;br&gt;Brute-force protection&lt;br&gt;Risk checks" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9EFF8;strokeColor=#244B8A;fontColor=#163172;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="450" y="180" width="360" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="token" value="&lt;b&gt;Session / Token Service&lt;/b&gt;&lt;br&gt;Short-lived access token&lt;br&gt;Refresh rotation&lt;br&gt;Session revocation&lt;br&gt;Device/session tracking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="920" y="180" width="360" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="policy" value="&lt;b&gt;Authorization Policy Engine&lt;/b&gt;&lt;br&gt;Permission code&lt;br&gt;Role assignment&lt;br&gt;Scope type&lt;br&gt;Scope ID&lt;br&gt;Record ownership" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="180" width="390" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="resource" value="&lt;b&gt;Protected Resource&lt;/b&gt;&lt;br&gt;API route&lt;br&gt;Business action&lt;br&gt;Record-level access" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9EFF8;strokeColor=#244B8A;fontColor=#163172;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="210" width="300" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="directory" value="&lt;b&gt;User &amp; Role Directory&lt;/b&gt;&lt;br&gt;users&lt;br&gt;roles&lt;br&gt;permissions&lt;br&gt;user_role_assignments" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FEF3C7;strokeColor=#D97706;fontColor=#78350F;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="450" y="570" width="360" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="sessionstore" value="&lt;b&gt;Session Store&lt;/b&gt;&lt;br&gt;Refresh token hash&lt;br&gt;Device&lt;br&gt;IP / user agent&lt;br&gt;Revocation status" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FEF3C7;strokeColor=#D97706;fontColor=#78350F;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="920" y="570" width="360" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="audit" value="&lt;b&gt;Security Audit Log&lt;/b&gt;&lt;br&gt;Login success/failure&lt;br&gt;MFA reset&lt;br&gt;Role changes&lt;br&gt;Privilege elevation&lt;br&gt;User suspension" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#475569;fontColor=#1E293B;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="570" width="390" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="pam" value="&lt;b&gt;Privileged Access Controls&lt;/b&gt;&lt;br&gt;MFA required&lt;br&gt;Approval for high privilege&lt;br&gt;Time-bound access preferred&lt;br&gt;Quarterly access review" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1900" y="570" width="300" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="i1" value="Credentials" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="user" target="login">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="i2" value="Issue tokens" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="login" target="token">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="i3" value="Authenticated identity" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="token" target="policy">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="i4" value="Allow / deny" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="policy" target="resource">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="i5" value="User lookup" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="login" target="directory">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="i6" value="Session state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="token" target="sessionstore">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="i7" value="Role + scope" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="policy" target="directory">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="i8" value="Security event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="login" target="audit">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="i9" value="Authorization event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="policy" target="audit">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="i10" value="Privilege constraints" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="pam" target="policy">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="rules" value="&lt;b&gt;Access decision formula&lt;/b&gt;&lt;br&gt;Authenticated user&lt;br&gt;+ active account&lt;br&gt;+ required permission&lt;br&gt;+ matching scope&lt;br&gt;+ valid record ownership&lt;br&gt;+ valid business state&lt;br&gt;= access granted" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="70" y="550" width="260" height="260" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="7ae37411-806a-44f9-9280-c4670a783f34" name="3. Tenant Isolation">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Multi-tenant Isolation and Data Scope Enforcement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#163172;strokeColor=#163172;fontColor=#ffffff;fontStyle=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="2250" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="request" value="&lt;b&gt;Incoming Request&lt;/b&gt;&lt;br&gt;JWT&lt;br&gt;X-Tenant-ID&lt;br&gt;Route parameters&lt;br&gt;Request body" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#F68C2C;fontColor=#7C2D12;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="70" y="210" width="300" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="context" value="&lt;b&gt;Tenant Context Middleware&lt;/b&gt;&lt;br&gt;Resolve user membership&lt;br&gt;Validate tenant status&lt;br&gt;Validate organization relation&lt;br&gt;Attach tenant context" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="180" width="380" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="permission" value="&lt;b&gt;Permission + Scope Check&lt;/b&gt;&lt;br&gt;Role permission&lt;br&gt;Tenant / organization scope&lt;br&gt;Team / assigned record scope&lt;br&gt;Partner attribution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="180" width="390" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="service" value="&lt;b&gt;Domain Service&lt;/b&gt;&lt;br&gt;Receives trusted tenant context&lt;br&gt;Validates ownership and state&lt;br&gt;Never accepts raw tenant override" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9EFF8;strokeColor=#244B8A;fontColor=#163172;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="180" width="390" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="repo" value="&lt;b&gt;Tenant-aware Repository&lt;/b&gt;&lt;br&gt;Every query includes tenant_id&lt;br&gt;Composite unique keys&lt;br&gt;Scoped joins&lt;br&gt;Scoped cache keys" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;fontColor=#065F46;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="2010" y="180" width="300" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="db" value="&lt;b&gt;Transactional Database&lt;/b&gt;&lt;br&gt;tenant_id on customer data&lt;br&gt;Optional DB row policies&lt;br&gt;Foreign keys include tenant scope where practical" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FEF3C7;strokeColor=#D97706;fontColor=#78350F;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="530" y="610" width="430" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="cache" value="&lt;b&gt;Cache / Queue&lt;/b&gt;&lt;br&gt;Keys include tenant ID&lt;br&gt;No cross-tenant shared result&lt;br&gt;Queue payload includes tenant context" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FEF3C7;strokeColor=#D97706;fontColor=#78350F;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="610" width="410" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="files" value="&lt;b&gt;Object Storage&lt;/b&gt;&lt;br&gt;tenant/{tenantId}/... path&lt;br&gt;Presigned URL authorization&lt;br&gt;Metadata ownership check&lt;br&gt;Private bucket" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FEF3C7;strokeColor=#D97706;fontColor=#78350F;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1610" y="610" width="410" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="t1" value="Resolve" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="request" target="context">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="t2" value="Trusted context" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="context" target="permission">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="t3" value="Authorized request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="permission" target="service">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="t4" value="Scoped query" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="service" target="repo">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="t5" value="tenant_id filter" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="repo" target="db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="t6" value="Scoped key / job" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="service" target="cache">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="t7" value="Authorized upload/download" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="service" target="files">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="deny" value="&lt;b&gt;Reject conditions&lt;/b&gt;&lt;br&gt;• Tenant header missing&lt;br&gt;• User not a tenant member&lt;br&gt;• Tenant suspended&lt;br&gt;• Record tenant does not match&lt;br&gt;• Partner attribution missing&lt;br&gt;• Cross-tenant identifier supplied" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="70" y="600" width="300" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="test" value="&lt;b&gt;Mandatory tests&lt;/b&gt;&lt;br&gt;• Cross-tenant read denied&lt;br&gt;• Cross-tenant update denied&lt;br&gt;• Cache isolation&lt;br&gt;• File isolation&lt;br&gt;• Queue job isolation&lt;br&gt;• Report aggregation scope" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="530" y="1000" width="430" height="220" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="e2268905-63a4-4a1f-8914-a4b30ed2387a" name="4. Application &amp; API">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Application and API Security Controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#163172;strokeColor=#163172;fontColor=#ffffff;fontStyle=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="2250" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge" value="Request Edge Controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;dashed=1;dashPattern=8 4;fontColor=#334155;fontStyle=1;fontSize=14;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="70" y="130" width="420" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="api" value="API Security Controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;dashed=1;dashPattern=8 4;fontColor=#334155;fontStyle=1;fontSize=14;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="550" y="130" width="520" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="domain" value="Business Security Controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;dashed=1;dashPattern=8 4;fontColor=#334155;fontStyle=1;fontSize=14;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="130" width="520" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="integration" value="External Integration Controls" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;dashed=1;dashPattern=8 4;fontColor=#334155;fontStyle=1;fontSize=14;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1710" y="130" width="520" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="waf" value="&lt;b&gt;WAF rules&lt;br&gt;Common attack filtering&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="120" y="210" width="320" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="rate" value="&lt;b&gt;Rate limiting&lt;br&gt;Per IP / user / tenant&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="120" y="330" width="320" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="tls" value="&lt;b&gt;TLS + HSTS&lt;br&gt;Secure headers&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="120" y="450" width="320" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cors" value="&lt;b&gt;CORS / CSRF policy&lt;br&gt;Origin allowlist&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="120" y="570" width="320" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="authz" value="&lt;b&gt;JWT validation&lt;br&gt;RBAC + scope&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9EFF8;strokeColor=#244B8A;fontColor=#163172;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="210" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="validation" value="&lt;b&gt;Schema validation&lt;br&gt;Zod / DTO / JSON Schema&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9EFF8;strokeColor=#244B8A;fontColor=#163172;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="330" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="errors" value="&lt;b&gt;Safe error responses&lt;br&gt;No stack traces / secrets&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9EFF8;strokeColor=#244B8A;fontColor=#163172;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="450" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="idempotency" value="&lt;b&gt;Idempotency&lt;br&gt;Financial and deployment writes&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9EFF8;strokeColor=#244B8A;fontColor=#163172;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="570" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="state" value="&lt;b&gt;Explicit state transitions&lt;br&gt;No direct status mutation&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="210" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="approval" value="&lt;b&gt;Approval gates&lt;br&gt;Separation of duties&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="330" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="immutable" value="&lt;b&gt;Immutable records&lt;br&gt;Published version / invoice / contract&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="450" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="audit" value="&lt;b&gt;Audit event&lt;br&gt;Reason capture for overrides&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="570" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="webhook" value="&lt;b&gt;Webhook signature&lt;br&gt;Event ID deduplication&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#7E22CE;fontColor=#581C87;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="210" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="timeout" value="&lt;b&gt;Timeout / retry / circuit breaker&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#7E22CE;fontColor=#581C87;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="330" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="secrets" value="&lt;b&gt;Secrets manager&lt;br&gt;No secrets in source code&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#7E22CE;fontColor=#581C87;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="450" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="egress" value="&lt;b&gt;Outbound allowlist&lt;br&gt;Provider-specific credentials&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E8FF;strokeColor=#7E22CE;fontColor=#581C87;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1780" y="570" width="380" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="a1" value="Filtered request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="waf" target="authz">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a2" value="Authorized action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="authz" target="state">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a3" value="External call if needed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="state" target="webhook">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="uploads" value="&lt;b&gt;File Upload Security&lt;/b&gt;&lt;br&gt;Presigned upload URL&lt;br&gt;MIME and extension allowlist&lt;br&gt;File size limits&lt;br&gt;Checksum validation&lt;br&gt;Malware scanning&lt;br&gt;Private storage&lt;br&gt;Safe download headers" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="810" width="500" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="publictoken" value="&lt;b&gt;Token-based Page Security&lt;/b&gt;&lt;br&gt;High-entropy token&lt;br&gt;Expiration&lt;br&gt;Single-purpose scope&lt;br&gt;Rate limiting&lt;br&gt;Optional password / OTP&lt;br&gt;No direct tenant ID exposure&lt;br&gt;Audit every decision" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="720" y="810" width="500" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="output" value="&lt;b&gt;Output Security&lt;/b&gt;&lt;br&gt;HTML sanitization&lt;br&gt;Context-aware escaping&lt;br&gt;Content Security Policy&lt;br&gt;Safe redirect allowlist&lt;br&gt;Signed download URLs&lt;br&gt;No sensitive data in client logs" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="810" width="500" height="260" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="02f36677-bad3-4650-acaa-881fcfb96617" name="5. Data Protection">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Data Protection, Privacy and Secrets Management" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#163172;strokeColor=#163172;fontColor=#ffffff;fontStyle=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="2250" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="classification" value="&lt;b&gt;Data Classification&lt;/b&gt;&lt;br&gt;Public&lt;br&gt;Internal&lt;br&gt;Confidential&lt;br&gt;Restricted" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="300" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="identity" value="&lt;b&gt;Identity Data&lt;br&gt;Name, email, phone&lt;/b&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FEF3C7;strokeColor=#D97706;fontColor=#78350F;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="130" width="320" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl_identity" value="Classify" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="classification" target="identity">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="commercial" value="&lt;b&gt;Commercial Data&lt;br&gt;Quotation, contract, pricing&lt;/b&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FEF3C7;strokeColor=#D97706;fontColor=#78350F;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="920" y="130" width="320" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl_commercial" value="Classify" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="classification" target="commercial">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="financial" value="&lt;b&gt;Financial Data&lt;br&gt;Invoice, payment, refund&lt;/b&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FEF3C7;strokeColor=#D97706;fontColor=#78350F;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="130" width="320" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl_financial" value="Classify" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="classification" target="financial">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="content" value="&lt;b&gt;Website Content&lt;br&gt;Text, media, drafts&lt;/b&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;fillColor=#FEF3C7;strokeColor=#D97706;fontColor=#78350F;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="130" width="320" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="cl_content" value="Classify" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="classification" target="content">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="encrypt" value="&lt;b&gt;Encryption&lt;/b&gt;&lt;br&gt;TLS in transit&lt;br&gt;Managed encryption at rest&lt;br&gt;Optional field-level encryption" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="430" width="320" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="minimize" value="&lt;b&gt;Data Minimization&lt;/b&gt;&lt;br&gt;Collect only required fields&lt;br&gt;Mask unnecessary values&lt;br&gt;Limit logs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="920" y="430" width="320" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="retention" value="&lt;b&gt;Retention&lt;/b&gt;&lt;br&gt;Contract-based retention&lt;br&gt;Audit retention&lt;br&gt;Media lifecycle&lt;br&gt;Deletion workflow" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="430" width="320" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="access" value="&lt;b&gt;Access Control&lt;/b&gt;&lt;br&gt;Least privilege&lt;br&gt;Scoped reporting&lt;br&gt;Admin access logging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="430" width="320" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="secrets" value="&lt;b&gt;Secrets Manager&lt;/b&gt;&lt;br&gt;Database credentials&lt;br&gt;JWT keys&lt;br&gt;Provider API keys&lt;br&gt;Webhook secrets&lt;br&gt;Rotation and environment separation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="800" width="400" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="backups" value="&lt;b&gt;Backup Protection&lt;/b&gt;&lt;br&gt;Encrypted snapshots&lt;br&gt;Restricted restore role&lt;br&gt;Restore audit log&lt;br&gt;Cross-region copy&lt;br&gt;Regular restore testing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#475569;fontColor=#1E293B;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="800" width="400" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="privacy" value="&lt;b&gt;Privacy Operations&lt;/b&gt;&lt;br&gt;Data export request&lt;br&gt;Correction request&lt;br&gt;Deletion / anonymization request&lt;br&gt;Contract and legal hold exceptions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;fontColor=#065F46;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="800" width="400" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="logging" value="&lt;b&gt;Logging Rules&lt;/b&gt;&lt;br&gt;Never log passwords, tokens or full payment data&lt;br&gt;Redact PII&lt;br&gt;Include request ID and tenant ID&lt;br&gt;Restrict audit-log access" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="760" width="300" height="260" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="058a3810-616e-48be-aa73-b29c74ba4de8" name="6. Secure SDLC">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Secure SDLC and CI/CD Security Gates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#163172;strokeColor=#163172;fontColor=#ffffff;fontStyle=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="2250" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="plan" value="&lt;b&gt;Plan / Design&lt;/b&gt;&lt;br&gt;Threat model&lt;br&gt;Security requirements&lt;br&gt;Permission definition" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="300" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="code" value="&lt;b&gt;Code&lt;/b&gt;&lt;br&gt;Secure coding&lt;br&gt;Peer review&lt;br&gt;Secret avoidance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;fontColor=#065F46;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="450" y="240" width="300" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="plan" target="code">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="build" value="&lt;b&gt;Build&lt;/b&gt;&lt;br&gt;SAST&lt;br&gt;Dependency scan&lt;br&gt;Secret scan&lt;br&gt;SBOM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;fontColor=#065F46;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="820" y="240" width="300" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="code" target="build">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="test" value="&lt;b&gt;Test&lt;/b&gt;&lt;br&gt;Unit / integration&lt;br&gt;Authorization tests&lt;br&gt;Tenant isolation tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;fontColor=#065F46;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="240" width="300" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="build" target="test">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="release" value="&lt;b&gt;Release&lt;/b&gt;&lt;br&gt;Image scan&lt;br&gt;Migration review&lt;br&gt;Approval gate" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;fontColor=#065F46;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="240" width="300" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="test" target="release">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="operate" value="&lt;b&gt;Operate&lt;/b&gt;&lt;br&gt;Monitoring&lt;br&gt;Patch management&lt;br&gt;Incident review" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1930" y="240" width="300" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="s5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="release" target="operate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="gates" value="&lt;b&gt;Mandatory pipeline gates&lt;/b&gt;&lt;br&gt;• Lint and type check&lt;br&gt;• Unit tests&lt;br&gt;• OpenAPI validation&lt;br&gt;• Permission test coverage&lt;br&gt;• Tenant isolation test coverage&lt;br&gt;• Dependency vulnerability threshold&lt;br&gt;• Container vulnerability threshold&lt;br&gt;• No detected secrets&lt;br&gt;• Signed and immutable build artifact" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="150" y="650" width="620" height="390" as="geometry"/>
+        </mxCell>
+        <mxCell id="branch" value="&lt;b&gt;Repository Protection&lt;/b&gt;&lt;br&gt;Protected main branch&lt;br&gt;Required reviews&lt;br&gt;No direct production push&lt;br&gt;Signed release tags preferred&lt;br&gt;CODEOWNERS for security-sensitive modules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="920" y="650" width="520" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="releasecontrol" value="&lt;b&gt;Deployment Controls&lt;/b&gt;&lt;br&gt;Environment-separated secrets&lt;br&gt;Least-privilege deployment identity&lt;br&gt;Backward-compatible migrations&lt;br&gt;Health checks and smoke tests&lt;br&gt;Automatic rollback criteria&lt;br&gt;Release audit record" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9EFF8;strokeColor=#244B8A;fontColor=#163172;fontStyle=1;fontSize=13;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="650" width="520" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="deps" value="&lt;b&gt;Third-party Risk&lt;/b&gt;&lt;br&gt;Approved provider list&lt;br&gt;Dependency inventory&lt;br&gt;Security review for payment / AI / notification providers&lt;br&gt;Webhook and data-sharing assessment" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="920" y="1080" width="1190" height="220" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="99f3e361-0acb-4fd4-aa69-5c5ded6eefb0" name="7. Threat Model">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Threat Model and Security Control Mapping" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#163172;strokeColor=#163172;fontColor=#ffffff;fontStyle=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="2250" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="auth" value="&lt;b&gt;Account takeover&lt;/b&gt;&lt;br&gt;&lt;br&gt;MFA, lockout, risk alerts, session revocation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="150" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="tenant" value="&lt;b&gt;Cross-tenant data access&lt;/b&gt;&lt;br&gt;&lt;br&gt;Server-side scope checks, tenant-aware repository, isolation tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="340" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="injection" value="&lt;b&gt;Injection / unsafe input&lt;/b&gt;&lt;br&gt;&lt;br&gt;Schema validation, parameterized queries, output encoding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="530" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="xss" value="&lt;b&gt;Stored or reflected XSS&lt;/b&gt;&lt;br&gt;&lt;br&gt;HTML sanitization, CSP, context-aware escaping" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="720" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="billing" value="&lt;b&gt;Billing or refund abuse&lt;/b&gt;&lt;br&gt;&lt;br&gt;Idempotency, approval, SoD, immutable finance records" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="910" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="webhook" value="&lt;b&gt;Forged provider webhook&lt;/b&gt;&lt;br&gt;&lt;br&gt;Signature verification, timestamp tolerance, event deduplication" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="830" y="150" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="upload" value="&lt;b&gt;Malicious file upload&lt;/b&gt;&lt;br&gt;&lt;br&gt;Allowlist, scan, checksum, private storage, safe download" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="830" y="340" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="secrets" value="&lt;b&gt;Secret leakage&lt;/b&gt;&lt;br&gt;&lt;br&gt;Secrets manager, scanning, rotation, environment separation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="830" y="530" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="deploy" value="&lt;b&gt;Unauthorized deployment&lt;/b&gt;&lt;br&gt;&lt;br&gt;Approval gate, immutable version, QA/customer approval, audit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="830" y="720" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="ai" value="&lt;b&gt;Unsafe or incorrect AI output&lt;/b&gt;&lt;br&gt;&lt;br&gt;Human review, prompt/output logging, content validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="830" y="910" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="dos" value="&lt;b&gt;Resource exhaustion / abuse&lt;/b&gt;&lt;br&gt;&lt;br&gt;WAF, rate limits, quotas, queue backpressure, circuit breakers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="150" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="insider" value="&lt;b&gt;Privileged insider misuse&lt;/b&gt;&lt;br&gt;&lt;br&gt;Least privilege, SoD, audit log, access review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="340" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="data_loss" value="&lt;b&gt;Data loss&lt;/b&gt;&lt;br&gt;&lt;br&gt;PITR, backups, cross-region copy, restore tests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="530" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="token" value="&lt;b&gt;Public token abuse&lt;/b&gt;&lt;br&gt;&lt;br&gt;High entropy, expiration, single purpose, rate limit, optional OTP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="720" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="supply" value="&lt;b&gt;Supply-chain compromise&lt;/b&gt;&lt;br&gt;&lt;br&gt;Dependency scan, SBOM, signed artifacts, branch protection" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="910" width="600" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="risknote" value="&lt;b&gt;Risk handling&lt;/b&gt;&lt;br&gt;Each material threat should have an owner, likelihood, impact, control, residual risk and review date. Security exceptions require documented approval and expiry." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1210" width="2100" height="150" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="7ca1ca94-3fa1-4c34-8f78-283c51d7e65f" name="8. Incident Response">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Security Monitoring and Incident Response" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#163172;strokeColor=#163172;fontColor=#ffffff;fontStyle=1;fontSize=20;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="50" y="20" width="2250" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="detect" value="&lt;b&gt;1. Detect&lt;/b&gt;&lt;br&gt;WAF alert&lt;br&gt;Login anomaly&lt;br&gt;Error spike&lt;br&gt;Audit anomaly&lt;br&gt;Provider alert" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#475569;fontColor=#1E293B;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="280" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="triage" value="&lt;b&gt;2. Triage&lt;/b&gt;&lt;br&gt;Validate signal&lt;br&gt;Identify tenant/users&lt;br&gt;Classify severity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#475569;fontColor=#1E293B;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="430" y="210" width="280" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="ir1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="detect" target="triage">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="contain" value="&lt;b&gt;3. Contain&lt;/b&gt;&lt;br&gt;Revoke sessions&lt;br&gt;Block IP/token&lt;br&gt;Disable integration&lt;br&gt;Suspend action" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="780" y="210" width="280" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="ir2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="triage" target="contain">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eradicate" value="&lt;b&gt;4. Eradicate&lt;/b&gt;&lt;br&gt;Patch issue&lt;br&gt;Rotate secrets&lt;br&gt;Remove malicious data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEE2E2;strokeColor=#DC2626;fontColor=#7F1D1D;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="210" width="280" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="ir3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="contain" target="eradicate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="recover" value="&lt;b&gt;5. Recover&lt;/b&gt;&lt;br&gt;Restore services&lt;br&gt;Validate integrity&lt;br&gt;Monitor closely" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#475569;fontColor=#1E293B;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1480" y="210" width="280" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="ir4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="eradicate" target="recover">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="review" value="&lt;b&gt;6. Review&lt;/b&gt;&lt;br&gt;Root cause&lt;br&gt;Customer impact&lt;br&gt;Corrective actions&lt;br&gt;Post-incident report" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#475569;fontColor=#1E293B;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1830" y="210" width="280" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="ir5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#475569;fontSize=11;" edge="1" parent="1" source="recover" target="review">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="severity" value="&lt;b&gt;Severity model&lt;/b&gt;&lt;br&gt;SEV-1: Major data exposure or platform-wide compromise&lt;br&gt;SEV-2: Material tenant impact or privileged account compromise&lt;br&gt;SEV-3: Limited impact, contained vulnerability&lt;br&gt;SEV-4: Low-risk event or false positive" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="620" width="560" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="playbooks" value="&lt;b&gt;Required playbooks&lt;/b&gt;&lt;br&gt;• Account takeover&lt;br&gt;• Cross-tenant access&lt;br&gt;• Payment webhook compromise&lt;br&gt;• Secret leakage&lt;br&gt;• Malicious upload&lt;br&gt;• Unauthorized deployment&lt;br&gt;• Data loss / restore&lt;br&gt;• Third-party provider outage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F2FE;strokeColor=#0284C7;fontColor=#0C4A6E;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="830" y="620" width="560" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="evidence" value="&lt;b&gt;Evidence and communication&lt;/b&gt;&lt;br&gt;Preserve logs and request IDs&lt;br&gt;Record timeline and decisions&lt;br&gt;Restrict evidence access&lt;br&gt;Notify affected stakeholders&lt;br&gt;Publish status updates when appropriate&lt;br&gt;Track corrective actions to closure" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;fontColor=#065F46;fontStyle=1;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="620" width="560" height="300" as="geometry"/>
+        </mxCell>
+        <mxCell id="monitor" value="&lt;b&gt;Monitoring signals&lt;/b&gt;&lt;br&gt;Failed login rate&lt;br&gt;MFA reset activity&lt;br&gt;403 / tenant mismatch rate&lt;br&gt;Refund and role-change anomalies&lt;br&gt;Webhook validation failures&lt;br&gt;Deployment / rollback failures&lt;br&gt;Backup and restore failures" style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;fontColor=#78350F;fontSize=11;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1050" width="2020" height="220" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

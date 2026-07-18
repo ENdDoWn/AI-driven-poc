@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grill With Docs"
+  short_description: "Choose options until a document brief is complete"
+  default_prompt: "Use $grill-with-docs to ask one question at a time with choices until the document brief is complete and confirmed."
