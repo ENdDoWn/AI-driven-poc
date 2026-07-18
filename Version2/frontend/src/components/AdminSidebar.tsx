@@ -55,15 +55,15 @@ export function AdminSidebar() {
   };
 
   return (
-    <aside className={`w-full overflow-x-hidden border-b-2 border-slate-300 bg-white lg:min-h-screen lg:border-b-0 lg:border-r-2 ${hydrated ? "transition-[width] duration-200 ease-smooth" : ""} ${collapsed ? "lg:w-20" : "lg:w-72"}`}>
-      <div className={`flex border-b-2 border-slate-300 p-4 ${collapsed ? "flex-col items-center gap-3" : "items-center justify-between"}`}>
+    <aside className={`w-full overflow-x-hidden border-b-2 border-slate-300 bg-white lg:sticky lg:top-0 lg:flex lg:h-dvh lg:max-h-dvh lg:flex-col lg:border-b-0 lg:border-r-2 ${hydrated ? "transition-[width] duration-200 ease-smooth" : ""} ${collapsed ? "lg:w-20" : "lg:w-72"}`}>
+      <div className={`flex shrink-0 border-b-2 border-slate-300 p-4 ${collapsed ? "flex-col items-center gap-3" : "items-center justify-between"}`}>
         <Link href="/" className={`font-bold hover:underline ${collapsed ? "text-xl" : "text-lg"}`} title="WOP / UI">{collapsed ? "W" : "WOP / UI"}</Link>
         <button type="button" onClick={toggleSidebar} className="border border-slate-300 px-2 py-1 text-sm font-bold transition-colors duration-150 hover:border-slate-900 active:scale-[0.98]" aria-label={collapsed ? "ขยาย Sidebar" : "ย่อ Sidebar"} title={collapsed ? "ขยาย Sidebar" : "ย่อ Sidebar"}>
           <span className={`inline-block transition-transform duration-200 ${collapsed ? "rotate-180" : ""}`}>←</span>
         </button>
       </div>
       {!collapsed && <p className="px-6 pt-4 text-xs font-bold uppercase tracking-wide text-slate-500">Internal Back Office</p>}
-      <nav className={`grid gap-5 ${collapsed ? "p-2" : "p-4"}`} aria-label="Internal Back Office navigation">
+      <nav className={`grid gap-5 lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:overscroll-contain ${collapsed ? "p-2" : "p-4"}`} aria-label="Internal Back Office navigation">
         {ADMIN_GROUPS.map((group) => {
           const items = navigation.filter((item) => group.hrefs.some((href) => href === item.href));
           if (items.length === 0) return null;
@@ -94,7 +94,7 @@ export function AdminSidebar() {
           );
         })}
       </nav>
-      <div className={`border-t border-slate-200 ${collapsed ? "p-2" : "p-4"}`}>
+      <div className={`shrink-0 border-t border-slate-200 ${collapsed ? "p-2" : "p-4"}`}>
         <Link
           href="/login"
           className="block border-2 border-slate-300 px-3 py-2 text-center text-sm font-bold transition-colors duration-150 hover:border-slate-900 hover:bg-slate-50"

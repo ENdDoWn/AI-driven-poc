@@ -14,12 +14,21 @@ import { WireframeHeader, WireframeMetric, WireframeSection, WireframeShell } fr
 import { ActionButton } from "@/components/ActionButton";
 import { DemoButton } from "@/components/DemoButton";
 import { interact, btnPrimary, btnSecondary, cardHover, rowHover } from "@/lib/ui";
+import { FiCalendar, FiCheckSquare, FiChevronDown, FiEdit3, FiFilter, FiMail, FiMessageCircle, FiPhone, FiPlus, FiUserPlus } from "react-icons/fi";
 
 const sectionNames = {
   admin: "Internal Back Office",
   portal: "Customer Portal",
   partner: "Partner Portal",
 };
+
+const inboxMessages = [
+  ['Facebook', 'คุณเมย์ · สนใจเว็บไซต์ร้านอาหาร', 'New lead', '10:42'],
+  ['LINE', 'บริษัท Green Clinic · ขอใบเสนอราคา', 'Qualified', '10:18'],
+  ['Website Form', 'คุณต้น · แบบฟอร์มขอใบเสนอราคา', 'New lead', '10:31'],
+  ['Facebook', 'North Star Studio · สอบถามแพ็กเกจ', 'Contacted', '09:55'],
+  ['LINE', 'Acme Accounting · ส่งข้อมูลเพิ่มเติม', 'Customer', 'เมื่อวาน'],
+] as const;
 
 export function SitemapWireframe({ path }: { path: string }) {
   const route = getRouteDefinition(path);
@@ -33,8 +42,12 @@ export function SitemapWireframe({ path }: { path: string }) {
         ? "Sales"
         : "Super Admin / Management";
 
+    if (route.kind === "inbox") {
+      return <div className="h-full min-h-0 flex-1 bg-white" />;
+    }
+
     return (
-      <WireframeHeader area={sectionNames.admin} title={route.label} role={role} fullBleed={route.kind === "inbox"}>
+      <WireframeHeader area={sectionNames.admin} title={route.pattern.endsWith("/:id") && ["/admin/contracts/:id", "/admin/deals/:id", "/admin/companies/:id"].includes(route.pattern) ? "ผู้ติดต่อ" : route.label} role={role} fullBleed={["/admin/contracts/:id", "/admin/deals/:id", "/admin/companies/:id"].includes(route.pattern)}>
         <RouteContent route={route} />
       </WireframeHeader>
     );
@@ -78,6 +91,7 @@ function RouteContent({ route }: { route: SitemapRoute }) {
   if (route.pattern === "/admin/companies") return <CompanyTableTemplate route={route} />;
   if (route.pattern === "/admin/contracts") return <ContractTableTemplate route={route} />;
   if (route.pattern === "/admin/form-submissions") return <FormSubmissionsTemplate />;
+  if (["/admin/contracts/:id", "/admin/deals/:id", "/admin/companies/:id"].includes(route.pattern)) return <ContractDetailTemplate />;
   if (route.kind === "public") return <PublicTemplate />;
   if (route.kind === "detail") return <DetailTemplate route={route} />;
   return <ListTemplate route={route} />;
@@ -172,11 +186,23 @@ function FormSubmissionsTemplate() {
     { contact: 'คุณต้น', form: 'ขอใบเสนอราคา', source: '/request-quote', status: 'New', submittedAt: getDateOffset(0, 10, 31) },
     { contact: 'บริษัท Green Clinic', form: 'ติดต่อเรา', source: '/contact', status: 'Assigned', submittedAt: getDateOffset(0, 10, 18) },
     { contact: 'คุณเมย์', form: 'Landing Page ร้านอาหาร', source: '/campaign/restaurant', status: 'Converted', submittedAt: getDateOffset(-1, 14, 5) },
+    { contact: 'บริษัท North Star Studio', form: 'ขอใบเสนอราคา', source: '/request-quote', status: 'New', submittedAt: getDateOffset(-1, 13, 42) },
+    { contact: 'คุณกานต์', form: 'ติดต่อเรา', source: '/contact', status: 'Assigned', submittedAt: getDateOffset(-2, 16, 20) },
+    { contact: 'Bright Home', form: 'Landing Page บ้านและสวน', source: '/campaign/home', status: 'Converted', submittedAt: getDateOffset(-2, 11, 8) },
+    { contact: 'คุณพลอย', form: 'ขอใบเสนอราคา', source: '/request-quote', status: 'New', submittedAt: getDateOffset(-3, 9, 55) },
+    { contact: 'Acme Accounting', form: 'ติดต่อเรา', source: '/contact', status: 'Assigned', submittedAt: getDateOffset(-3, 15, 12) },
+    { contact: 'Lanna Cafe', form: 'Landing Page ร้านอาหาร', source: '/campaign/restaurant', status: 'Converted', submittedAt: getDateOffset(-4, 10, 4) },
+    { contact: 'คุณวิน', form: 'ขอใบเสนอราคา', source: '/request-quote', status: 'New', submittedAt: getDateOffset(-5, 14, 36) },
+    { contact: 'บริษัท Siam Wellness', form: 'ติดต่อเรา', source: '/contact', status: 'Assigned', submittedAt: getDateOffset(-6, 12, 18) },
+    { contact: 'Mango Creative', form: 'Landing Page เอเจนซี', source: '/campaign/agency', status: 'Converted', submittedAt: getDateOffset(-7, 16, 45) },
   ];
+  const pageSize = 10;
   const initialDateRange = getThisWeekRange();
   const [fromDate, setFromDate] = useState(initialDateRange.from);
   const [toDate, setToDate] = useState(initialDateRange.to);
   const [isDateFilterOpen, setIsDateFilterOpen] = useState(false);
+  const [page, setPage] = useState(1);
+  const [selectedSubmission, setSelectedSubmission] = useState<(typeof rows)[number] | null>(null);
   const filteredRows = useMemo(
     () => rows.filter((row) => {
       const submittedDate = getDateInputValue(new Date(row.submittedAt));
@@ -184,13 +210,31 @@ function FormSubmissionsTemplate() {
     }),
     [fromDate, toDate],
   );
+  const pageCount = Math.max(1, Math.ceil(filteredRows.length / pageSize));
+  const currentPage = Math.min(page, pageCount);
+  const paginatedRows = filteredRows.slice((currentPage - 1) * pageSize, currentPage * pageSize);
+  const statusCounts = rows.reduce<Record<string, number>>((counts, row) => {
+    counts[row.status] = (counts[row.status] ?? 0) + 1;
+    return counts;
+  }, {});
 
   return (
-    <div className="grid gap-6">
-      <WireframeSection
-        title="Customer-submitted forms"
-        action={
-          <div className="relative flex items-center gap-2">
+    <div className="grid gap-5">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="border-2 border-slate-900 bg-slate-900 p-4 text-white">
+          <p className="text-xs font-bold uppercase tracking-wide text-slate-300">Total submissions</p>
+          <p className="mt-3 text-3xl font-bold tabular-nums">{rows.length}</p>
+          <p className="mt-1 text-xs text-slate-300">All captured requests</p>
+        </div>
+        <WireframeMetric label="New" value={String(statusCounts.New ?? 0)} detail="Needs first review" />
+        <WireframeMetric label="Assigned" value={String(statusCounts.Assigned ?? 0)} detail="Owned by the sales team" />
+        <WireframeMetric label="Converted" value={String(statusCounts.Converted ?? 0)} detail="Moved into CRM" />
+      </div>
+
+      <WireframeSection title="" className="overflow-visible p-0">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-slate-200 p-5">
+          <h2 className="font-bold">Submission inbox</h2>
+          <div className="relative flex shrink-0 items-center gap-2">
             <button
               type="button"
               aria-expanded={isDateFilterOpen}
@@ -200,42 +244,95 @@ function FormSubmissionsTemplate() {
             >
               Filter
             </button>
-            <DemoButton className={`${btnPrimary} px-4 py-2`} onClick={() => exportSubmissions(filteredRows)}>Export</DemoButton>
+            <DemoButton className={`${btnPrimary} px-4 py-2`} onClick={() => exportSubmissions(filteredRows)}>Export CSV</DemoButton>
             {isDateFilterOpen ? (
               <div id="submission-date-filter" className="absolute right-0 top-full z-10 mt-2 w-80 border-2 border-slate-300 bg-white p-4 shadow-[4px_4px_0_0_#cbd5e1]">
+                <div className="mb-3 flex items-center justify-between gap-3">
+                  <p className="text-sm font-bold">Filter by date</p>
+                  <span className="text-xs text-slate-500">{filteredRows.length} results</span>
+                </div>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <label className="grid gap-1 text-xs font-bold text-slate-500" htmlFor="submission-from-date">
                     From
-                    <input id="submission-from-date" type="date" value={fromDate} onChange={(event) => setFromDate(event.target.value)} className="h-10 border-2 border-slate-300 bg-white px-2 text-sm font-normal text-slate-900" />
+                    <input id="submission-from-date" name="submission-from-date" type="date" value={fromDate} onChange={(event) => setFromDate(event.target.value)} className="h-10 border-2 border-slate-300 bg-white px-2 text-sm font-normal text-slate-900" />
                     <span className="font-normal text-slate-400">{formatDateInput(fromDate)}</span>
                   </label>
                   <label className="grid gap-1 text-xs font-bold text-slate-500" htmlFor="submission-to-date">
                     To
-                    <input id="submission-to-date" type="date" value={toDate} onChange={(event) => setToDate(event.target.value)} className="h-10 border-2 border-slate-300 bg-white px-2 text-sm font-normal text-slate-900" />
+                    <input id="submission-to-date" name="submission-to-date" type="date" value={toDate} onChange={(event) => setToDate(event.target.value)} className="h-10 border-2 border-slate-300 bg-white px-2 text-sm font-normal text-slate-900" />
                     <span className="font-normal text-slate-400">{formatDateInput(toDate)}</span>
                   </label>
                 </div>
                 <button type="button" onClick={() => { const range = getThisWeekRange(); setFromDate(range.from); setToDate(range.to); }} className={`${btnSecondary} mt-3 w-full px-3 py-2`}>
-                  This week
+                  Reset to this week
                 </button>
               </div>
             ) : null}
           </div>
-        }
-      >
-        <div className="overflow-x-auto">
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-slate-50 px-5 py-3 text-xs">
+          <p className="font-bold text-slate-700">Showing {filteredRows.length === 0 ? 0 : (currentPage - 1) * pageSize + 1}–{Math.min(currentPage * pageSize, filteredRows.length)} of {filteredRows.length} submissions</p>
+          <p className="text-slate-500">{formatDateInput(fromDate)} – {formatDateInput(toDate)}</p>
+        </div>
+
+        <div className="overflow-x-auto p-5">
           <table className="w-full min-w-[820px] text-left text-sm">
-            <thead className="border-b-2 border-slate-300 text-xs uppercase tracking-wide text-slate-500"><tr><th className="pb-3 pr-4">Contact</th><th className="pb-3 pr-4">Form source</th><th className="pb-3 pr-4">Status</th><th className="pb-3">Received</th></tr></thead>
-            <tbody>{filteredRows.length > 0 ? filteredRows.map((row) => <tr key={`${row.contact}-${row.form}`} className={`border-b border-slate-200 ${rowHover}`}><td className="py-4 pr-4 font-bold"><Link href="/admin/form-submissions/demo-submission" className={`${interact} hover:underline`}>{row.contact}</Link></td><td className="py-4 pr-4"><p>{row.form}</p><p className="mt-1 font-mono text-xs text-slate-500">{row.source}</p></td><td className="py-4 pr-4"><span className="border border-slate-400 px-2 py-1 text-xs">{row.status}</span></td><td className="py-4">{formatReceived(row.submittedAt)}</td></tr>) : <tr><td colSpan={4} className="py-8 text-center text-sm text-slate-500">No submissions in this date range.</td></tr>}</tbody>
+            <thead className="border-b-2 border-slate-300 text-xs uppercase tracking-wide text-slate-500"><tr><th className="pb-3 pr-4">Contact</th><th className="pb-3 pr-4">Form source</th><th className="pb-3 pr-4">Status</th><th className="pb-3 pr-4">Received</th><th className="pb-3">Action</th></tr></thead>
+            <tbody>{paginatedRows.length > 0 ? paginatedRows.map((row) => <tr key={`${row.contact}-${row.form}`} className={`border-b border-slate-200 ${rowHover}`}><td className="py-4 pr-4 align-top"><button type="button" onClick={() => setSelectedSubmission(row)} className={`${interact} text-left font-bold hover:underline`}>{row.contact}</button><p className="mt-1 text-xs text-slate-500">Click to view details</p></td><td className="py-4 pr-4 align-top"><p className="font-medium">{row.form}</p><p className="mt-1 font-mono text-xs text-slate-500">{row.source}</p></td><td className="py-4 pr-4 align-top"><span className={`inline-flex border px-2 py-1 text-xs font-bold ${getSubmissionStatusClass(row.status)}`}>{row.status}</span></td><td className="py-4 pr-4 align-top text-slate-600">{formatReceived(row.submittedAt)}</td><td className="py-4 align-top"><DemoButton className={`${btnSecondary} whitespace-nowrap px-3 py-2 text-xs`} onClick={() => setSelectedSubmission(row)}>Create contract</DemoButton></td></tr>) : <tr><td colSpan={5} className="py-12 text-center text-sm text-slate-500">No submissions in this date range.</td></tr>}</tbody>
           </table>
         </div>
-        <p className="mt-4 text-xs text-slate-500">แสดง {filteredRows.length} จาก {rows.length} รายการ</p>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-4">
+          <p className="text-xs text-slate-500">10 submissions per page</p>
+          <nav className="flex items-center gap-1" aria-label="Submission pagination">
+            <button type="button" disabled={currentPage === 1} onClick={() => setPage((value) => Math.max(1, value - 1))} className={`${btnSecondary} px-3 py-2 text-xs disabled:cursor-not-allowed disabled:opacity-40`}>Previous</button>
+            {Array.from({ length: pageCount }, (_, index) => index + 1).map((pageNumber) => <button key={pageNumber} type="button" aria-current={pageNumber === currentPage ? "page" : undefined} onClick={() => setPage(pageNumber)} className={`${pageNumber === currentPage ? btnPrimary : btnSecondary} px-3 py-2 text-xs`}>{pageNumber}</button>)}
+            <button type="button" disabled={currentPage === pageCount} onClick={() => setPage((value) => Math.min(pageCount, value + 1))} className={`${btnSecondary} px-3 py-2 text-xs disabled:cursor-not-allowed disabled:opacity-40`}>Next</button>
+          </nav>
+        </div>
       </WireframeSection>
-      <WireframeSection title="Submission workflow">
-        <div className="grid gap-3 sm:grid-cols-4">{['รับข้อมูลจาก Form', 'ตรวจสอบข้อมูล', 'สร้าง / merge Lead', 'ส่งต่อ Deal หรือ Sales'].map((step, index) => <div key={step} className="border-2 border-dashed border-slate-300 p-4"><p className="text-xs font-bold text-slate-500">0{index + 1}</p><p className="mt-2 text-sm font-bold">{step}</p></div>)}</div>
-      </WireframeSection>
+
+      {selectedSubmission ? (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-slate-900/40 p-4" role="presentation" onMouseDown={() => setSelectedSubmission(null)}>
+          <div className="max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto border-2 border-slate-900 bg-white p-5 shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="submission-detail-title" onMouseDown={(event) => event.stopPropagation()}>
+            <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wide text-slate-500">Form submission</p>
+                <h2 id="submission-detail-title" className="mt-1 text-xl font-bold">{selectedSubmission.contact}</h2>
+              </div>
+              <button type="button" onClick={() => setSelectedSubmission(null)} className="border border-slate-300 px-2 py-1 text-sm font-bold hover:border-slate-900" aria-label="Close submission details">×</button>
+            </div>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              <SubmissionDetail label="Contact" value={selectedSubmission.contact} />
+              <SubmissionDetail label="Form" value={selectedSubmission.form} />
+              <SubmissionDetail label="Source" value={selectedSubmission.source} mono />
+              <SubmissionDetail label="Received" value={formatReceived(selectedSubmission.submittedAt)} />
+              <SubmissionDetail label="Status" value={selectedSubmission.status} />
+              <SubmissionDetail label="Email" value="customer@example.com" />
+            </div>
+            <div className="mt-4 border-2 border-slate-200 bg-slate-50 p-4">
+              <p className="text-xs font-bold uppercase tracking-wide text-slate-500">Customer message</p>
+              <p className="mt-2 text-sm leading-6 text-slate-700">สนใจรายละเอียดบริการและแพ็กเกจเพิ่มเติม รบกวนทีมงานติดต่อกลับเพื่อแนะนำแนวทางที่เหมาะสมค่ะ</p>
+            </div>
+            <div className="mt-5 flex justify-end gap-3 border-t border-slate-200 pt-4">
+              <button type="button" onClick={() => setSelectedSubmission(null)} className={`${btnSecondary} px-4 py-2`}>Close</button>
+              <DemoButton className={`${btnPrimary} px-4 py-2`} onClick={() => setSelectedSubmission(null)}>Create contract</DemoButton>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
+}
+
+function SubmissionDetail({ label, value, mono = false }: { label: string; value: string; mono?: boolean }) {
+  return <div className="border border-slate-200 p-3"><p className="text-xs font-bold uppercase tracking-wide text-slate-500">{label}</p><p className={`mt-2 text-sm ${mono ? 'font-mono' : ''}`}>{value}</p></div>;
+}
+
+function getSubmissionStatusClass(status: string) {
+  if (status === 'New') return 'border-sky-300 bg-sky-50 text-sky-700';
+  if (status === 'Assigned') return 'border-amber-300 bg-amber-50 text-amber-700';
+  return 'border-emerald-300 bg-emerald-50 text-emerald-700';
 }
 
 function getDateOffset(offset: number, hour: number, minute: number) {
@@ -284,27 +381,73 @@ function exportSubmissions(rows: Array<{ contact: string; form: string; source: 
 
 function ContractTableTemplate({ route }: { route: SitemapRoute }) {
   const detailHref = resolveActionTarget(route, "detail");
+  const contracts = [
+    { name: 'คุณต้น', contract: 'Website Retainer #001', company: 'Green Clinic Co., Ltd.', linked: true, status: 'Active', start: '01 Jan 2026', end: '31 Dec 2026' },
+    { name: 'คุณเมย์', contract: 'SEO Add-on #004', company: 'Green Clinic Co., Ltd.', linked: true, status: 'Active', start: '01 Mar 2026', end: '28 Feb 2027' },
+    { name: 'คุณกานต์', contract: 'Corporate Website #018', company: 'North Star Studio', linked: true, status: 'Pending signature', start: '18 Jul 2026', end: '17 Jul 2027' },
+    { name: 'คุณพลอย', contract: 'Website Package #021', company: 'ยังไม่มีบริษัท', linked: false, status: 'Draft', start: '—', end: '—' },
+  ];
+  const linkedCount = contracts.filter((contract) => contract.linked).length;
+
   return (
-    <div className="grid gap-6">
-      <WireframeSection title="Contract table">
-        <div className="grid gap-3 md:grid-cols-[1.3fr_1fr_1fr_auto]">
-          <Placeholder label="Search contract / company" />
-          <Placeholder label="Status: All" />
-          <Placeholder label="Expiry: All" />
-          <ActionButton href={resolveActionTarget(route, "create")} className={`${btnPrimary} px-4 py-2`}>+ Add contract</ActionButton>
+    <div className="grid gap-5">
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="border-2 border-slate-900 bg-slate-900 p-4 text-white"><p className="text-xs font-bold uppercase tracking-wide text-slate-300">Total contracts</p><p className="mt-3 text-3xl font-bold tabular-nums">{contracts.length}</p><p className="mt-1 text-xs text-slate-300">All contract records</p></div>
+        <WireframeMetric label="Active" value={String(contracts.filter((contract) => contract.status === 'Active').length)} detail="Currently in service" />
+        <WireframeMetric label="Pending signature" value={String(contracts.filter((contract) => contract.status === 'Pending signature').length)} detail="Waiting for approval" />
+        <WireframeMetric label="Company linked" value={`${linkedCount}/${contracts.length}`} detail="Contract relationship" />
+      </div>
+
+      <WireframeSection title="" className="overflow-visible p-0">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-slate-200 p-5">
+          <h2 className="font-bold">Contract inbox</h2>
+          <div className="flex items-center gap-2"><button type="button" className={`${btnSecondary} px-3 py-2`}>Filter</button><ActionButton href={resolveActionTarget(route, "create")} className={`${btnPrimary} px-4 py-2`}>+ Add contract</ActionButton></div>
         </div>
-      </WireframeSection>
-      <WireframeSection title="Contracts · one company can have many contracts">
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[720px] text-left text-sm">
-            <thead className="border-b-2 border-slate-300 text-xs uppercase tracking-wide text-slate-500"><tr><th className="pb-3 pr-4">Contract</th><th className="pb-3 pr-4">Company</th><th className="pb-3 pr-4">Status</th><th className="pb-3 pr-4">Start</th><th className="pb-3">End</th></tr></thead>
-            <tbody>{[['Website Retainer #001','Green Clinic Co., Ltd.','Active','01 Jan 2026','31 Dec 2026'],['SEO Add-on #004','Green Clinic Co., Ltd.','Active','01 Mar 2026','28 Feb 2027'],['Corporate Website #018','North Star Studio','Pending signature','18 Jul 2026','17 Jul 2027']].map((row) => <tr key={row[0]} className={`border-b border-slate-200 ${rowHover}`}><td className="py-4 pr-4 font-bold">{detailHref ? <Link href={detailHref} className={`${interact} hover:underline`}>{row[0]}</Link> : row[0]}</td><td className="py-4 pr-4">{row[1]}</td><td className="py-4 pr-4"><span className="border border-slate-400 px-2 py-1 text-xs">{row[2]}</span></td><td className="py-4 pr-4">{row[3]}</td><td className="py-4">{row[4]}</td></tr>)}</tbody>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-slate-50 px-5 py-3 text-xs"><p className="font-bold text-slate-700">Showing {contracts.length} contracts</p><p className="text-slate-500">One company can have many contracts</p></div>
+        <div className="overflow-x-auto p-5">
+          <table className="w-full min-w-[980px] text-left text-sm">
+            <thead className="border-b-2 border-slate-300 text-xs uppercase tracking-wide text-slate-500"><tr><th className="pb-3 pr-4">Contact name</th><th className="pb-3 pr-4">Contract</th><th className="pb-3 pr-4">Company</th><th className="pb-3 pr-4">Linked</th><th className="pb-3 pr-4">Status</th><th className="pb-3 pr-4">Start</th><th className="pb-3">End</th></tr></thead>
+            <tbody>{contracts.map((row) => <tr key={row.contract} className={`border-b border-slate-200 ${rowHover}`}><td className="py-4 pr-4 align-top font-bold">{detailHref ? <Link href={detailHref} className={`${interact} hover:underline`}>{row.name}</Link> : row.name}</td><td className="py-4 pr-4 align-top"><p className="font-medium">{row.contract}</p><p className="mt-1 text-xs text-slate-500">Contract record</p></td><td className="py-4 pr-4 align-top">{row.company}</td><td className="py-4 pr-4 align-top"><span className={`inline-flex border px-2 py-1 text-xs font-bold ${row.linked ? 'border-emerald-300 bg-emerald-50 text-emerald-700' : 'border-amber-300 bg-amber-50 text-amber-700'}`}>{row.linked ? 'Linked' : 'Not linked'}</span></td><td className="py-4 pr-4 align-top"><span className={`inline-flex border px-2 py-1 text-xs font-bold ${getContractStatusClass(row.status)}`}>{row.status}</span></td><td className="py-4 pr-4 align-top text-slate-600">{row.start}</td><td className="py-4 align-top text-slate-600">{row.end}</td></tr>)}</tbody>
           </table>
         </div>
       </WireframeSection>
     </div>
   );
 }
+
+function getContractStatusClass(status: string) {
+  if (status === 'Active') return 'border-emerald-300 bg-emerald-50 text-emerald-700';
+  if (status === 'Pending signature') return 'border-amber-300 bg-amber-50 text-amber-700';
+  return 'border-slate-300 bg-slate-50 text-slate-700';
+}
+
+function ContractDetailTemplate() {
+  return (
+    <div className="min-h-[calc(100vh-150px)] bg-slate-50">
+      <div className="grid gap-3 p-3 pt-4 lg:grid-cols-[minmax(230px,0.8fr)_minmax(420px,1.45fr)_minmax(260px,0.95fr)] lg:p-4">
+        <div className="grid content-start gap-3">
+          <section className="border-2 border-slate-300 bg-white p-6">
+            <div className="flex items-center gap-4"><div className="grid h-14 w-14 place-items-center border-2 border-slate-900 bg-slate-900 text-xl font-bold text-white">ต</div><div><h2 className="text-lg font-bold">คุณต้น</h2><p className="mt-1 text-sm text-slate-500">Customer contact</p></div></div>
+            <div className="mt-6 grid grid-cols-5 gap-2 text-center"><DetailQuickAction icon={<FiEdit3 />} label="Note" /><DetailQuickAction icon={<FiMail />} label="Email" /><DetailQuickAction icon={<FiPhone />} label="Call" /><DetailQuickAction icon={<FiCheckSquare />} label="Task" /><DetailQuickAction icon={<FiCalendar />} label="Meeting" /></div>
+          </section>
+          <section className="border-2 border-slate-300 bg-white p-6"><div className="flex items-center justify-between"><h2 className="text-lg font-bold">ข้อมูลสำคัญ</h2><FiFilter aria-hidden="true" className="text-slate-500" /></div><dl className="mt-6 grid gap-4 text-sm"><DetailField label="ชื่อ-นามสกุล" value="คุณต้น" /><DetailField label="อีเมล" value="customer@example.com" /><DetailField label="เบอร์โทร" value="081-234-5678" /><DetailField label="สถานะบริษัท" value="ผูกกับบริษัทแล้ว" /><DetailField label="บริษัท" value="Green Clinic Co., Ltd." /><DetailField label="ประเภทธุรกิจ" value="Healthcare" /></dl></section>
+        </div>
+
+        <div className="grid content-start gap-3">
+          <div className="grid grid-cols-4 overflow-hidden border-2 border-slate-300 bg-white"><button type="button" className="border-r border-slate-200 bg-slate-50 px-3 py-4 font-bold">ข้อมูล</button><button type="button" className="border-r border-slate-200 px-3 py-4 text-slate-500 hover:bg-slate-50">กิจกรรม</button><button type="button" className="border-r border-slate-200 px-3 py-4 text-slate-500 hover:bg-slate-50">รายได้</button><button type="button" className="px-3 py-4 text-slate-500 hover:bg-slate-50">ข้อมูลเชิงลึก</button></div>
+          <section className="border-2 border-slate-300 bg-white p-6"><div className="flex flex-wrap items-center justify-between gap-3"><h2 className="text-2xl font-bold">กิจกรรม</h2><DemoButton className={`${btnPrimary} flex items-center gap-2 px-4 py-2`}><FiPlus aria-hidden="true" /> เพิ่มกิจกรรม</DemoButton></div><div className="mt-5 flex flex-wrap gap-4 border-b border-slate-200 pb-3 text-sm"><span className="border-b-2 border-slate-900 pb-3 font-bold"><FiMessageCircle className="mr-1 inline" /> ทั้งหมด</span><span className="text-slate-500"><FiEdit3 className="mr-1 inline" /> Note</span><span className="text-slate-500"><FiMail className="mr-1 inline" /> Email</span><span className="text-slate-500"><FiPhone className="mr-1 inline" /> Call</span><span className="text-slate-500"><FiCheckSquare className="mr-1 inline" /> Task</span><span className="text-slate-500"><FiCalendar className="mr-1 inline" /> Meeting</span></div><p className="mt-5 text-3xl font-bold">มีนาคม 2569</p><div className="mt-5 grid gap-4"><ActivityCard type="ผู้ติดต่อ" title="สร้างผู้ติดต่อ" description="ระบบบันทึกข้อมูลผู้ติดต่อจากแชตเรียบร้อยโดยระบบ" date="10 มี.ค. 2569 10:24" /><ActivityCard type="ข้อความเข้า" title="ลูกค้าทักเข้ามาครั้งแรก" description="เริ่มบทสนทนาผ่าน WEBSITE FORM เพื่อขอใบเสนอราคาโดยลูกค้า" date="09 มี.ค. 2569 14:36" /></div></section>
+        </div>
+
+        <div className="grid content-start gap-5"><AssociationCard title="Companies (1)" action="Add" content={<><p className="font-bold text-teal-700 underline">Green Clinic Co., Ltd. <span className="ml-2 border border-emerald-400 px-2 py-1 text-xs font-normal no-underline">Primary</span></p><p className="mt-4 text-sm">Company Domain Name: <span className="text-teal-700 underline">greenclinic.co.th</span></p><p className="mt-3 text-sm">Phone: 02-123-4567</p></>} /><AssociationCard title="Deals (0)" action="Add" content={<p className="py-8 text-center text-sm text-slate-500">Track the revenue opportunities associated with this record.</p>} /><AssociationCard title="Tickets (0)" action="Add" content={<p className="py-8 text-center text-sm text-slate-500">Track the customer requests associated with this record.</p>} /><AssociationCard title="Attachments" action="Add" content={<p className="py-4 text-sm text-slate-500">No attachments yet.</p>} /></div>
+      </div>
+    </div>
+  );
+}
+
+function DetailQuickAction({ icon, label }: { icon: ReactNode; label: string }) { return <button type="button" className="grid justify-items-center gap-1 text-xs font-bold hover:text-slate-500"><span className="grid h-10 w-10 place-items-center border-2 border-slate-300 text-lg">{icon}</span>{label}</button>; }
+function DetailField({ label, value }: { label: string; value: string }) { return <div><dt className="text-xs text-slate-500">{label}</dt><dd className="mt-1 font-medium">{value}</dd></div>; }
+function ActivityCard({ type, title, description, date }: { type: string; title: string; description: string; date: string }) { return <article className="border-2 border-slate-300 p-5"><div className="flex items-start justify-between gap-4"><div><p className="text-sm text-slate-500"><FiUserPlus className="mr-1 inline" /> {type}</p><h3 className="mt-4 font-bold">{title}</h3><p className="mt-1 text-sm leading-6 text-slate-500">{description}</p></div><time className="shrink-0 text-xs text-slate-500">{date}</time></div></article>; }
+function AssociationCard({ title, action, content }: { title: string; action: string; content: ReactNode }) { return <section className="border-2 border-slate-300 bg-white p-5"><div className="flex items-center justify-between gap-3"><h2 className="text-lg font-bold"><FiChevronDown className="mr-1 inline" /> {title}</h2><button type="button" className="flex items-center gap-1 text-sm font-bold hover:underline"><FiPlus aria-hidden="true" /> {action}</button></div><div className="mt-4 border border-slate-300 p-4">{content}</div></section>; }
 
 function DealKanbanTemplate() {
   const columns: Array<[string, Array<[string, string, string, string, string]>]> = [
@@ -326,7 +469,7 @@ function DealKanbanTemplate() {
         <WireframeMetric label="Won this month" value="8" detail="Compared with previous period" />
         <WireframeMetric label="Win rate" value="36%" detail="Current sales period" />
       </div>
-      <div className="overflow-x-auto pb-3"><div className="grid min-w-[1320px] grid-cols-5 gap-4">{columns.map(([status, deals]) => <section key={status} className="min-h-[520px] border-2 border-slate-300 bg-slate-50 p-3"><div className="flex items-center justify-between border-b-2 border-slate-300 pb-3"><h3 className="font-bold">{status}</h3><span className="border border-slate-400 px-2 py-1 text-xs font-bold">{deals.length}</span></div><div className="mt-3 grid gap-3">{deals.map(([id, company, name, value, score]) => <Link key={id} href={`/admin/deals/${id.toLowerCase()}`} className={`${cardHover} border-2 border-slate-300 bg-white p-4 active:scale-[0.99]`}><p className="text-xs font-bold text-slate-500">{id}</p><p className="mt-2 font-bold">{company}</p><p className="mt-1 text-sm text-slate-600">{name}</p><div className="mt-4 flex items-center justify-between gap-2 text-xs"><span className="font-bold">{value}</span><span className="rounded-full border border-slate-400 px-2 py-1">Score {score}</span></div><p className="mt-3 border-t border-slate-200 pt-3 text-xs text-slate-500">Owner: Sales · Updated today</p></Link>)}</div></section>)}</div></div>
+      <div className="overflow-x-auto pb-3"><div className="grid min-w-[1600px] grid-cols-5 gap-5">{columns.map(([status, deals]) => <section key={status} className="min-h-[520px] border-2 border-slate-300 bg-slate-50 p-4"><div className="flex items-center justify-between border-b-2 border-slate-300 pb-3"><h3 className="font-bold">{status}</h3><span className="border border-slate-400 px-2 py-1 text-xs font-bold">{deals.length}</span></div><div className="mt-3 grid gap-4">{deals.map(([id, company, name, value, score]) => <Link key={id} href={`/admin/deals/${id.toLowerCase()}`} className={`${cardHover} border-2 border-slate-300 bg-white p-5 active:scale-[0.99]`}><p className="text-xs font-bold text-slate-500">{id}</p><p className="mt-2 font-bold">{company}</p><p className="mt-1 text-sm text-slate-600">{name}</p><div className="mt-4 flex items-center justify-between gap-2 text-xs"><span className="font-bold">{value}</span><span className="rounded-full border border-slate-400 px-2 py-1">Score {score}</span></div><p className="mt-3 border-t border-slate-200 pt-3 text-xs text-slate-500">Owner: Sales · Updated today</p></Link>)}</div></section>)}</div></div>
     </div>
   );
 }
@@ -555,62 +698,97 @@ function TransactionTemplate({ route }: { route: SitemapRoute }) {
   );
 }
 
-function InboxTemplate() {
+function InboxMessageList() {
   return (
-    <div className="grid min-h-[680px] overflow-hidden border-2 border-slate-300 bg-white xl:grid-cols-[220px_340px_1fr]">
-      <aside className="border-b-2 border-slate-300 bg-slate-50 xl:border-b-0 xl:border-r-2">
-        <div className="border-b-2 border-slate-300 p-5"><p className="text-lg font-bold">แชท</p><p className="mt-1 text-xs text-slate-500">รวมทุกช่องทาง</p></div>
-        <nav className="grid gap-1 p-3 text-sm">
-          {['แชททั้งหมด 12', 'แชทของฉัน 4', 'Website Form 6', 'Facebook 3', 'LINE 3', 'จบแชทแล้ว 18'].map((item, index) => <DemoButton key={item} className={`${interact} flex items-center justify-between px-3 py-3 text-left ${index === 0 ? 'border-2 border-slate-900 bg-white font-bold' : 'text-slate-600 hover:bg-white'}`}><span>{item.split(' ')[0]}{item.split(' ')[1] && ` ${item.split(' ')[1]}`}</span><span className="text-xs text-slate-400">{item.match(/\d+$/)?.[0]}</span></DemoButton>)}
-        </nav>
-        <div className="border-t border-slate-200 p-4"><p className="text-xs font-bold uppercase tracking-wide text-slate-400">Team</p><p className="mt-3 text-sm font-bold">Sales / Account</p><p className="mt-1 text-xs text-slate-500">กำลังออนไลน์ 3 คน</p></div>
-      </aside>
-      <section className="border-b-2 border-slate-300 xl:border-b-0 xl:border-r-2">
-      <WireframeSection title="แชททั้งหมด" className="h-full border-0 p-3">
-        <div className="mb-4 flex flex-wrap gap-2">
-          {['All', 'Facebook', 'LINE', 'Website Form', 'Unassigned'].map((filter, index) => (
-            <span key={filter} className={`border px-3 py-2 text-xs font-bold ${index === 0 ? 'border-slate-900 bg-slate-900 text-white' : 'border-slate-300'}`}>
-              {filter}
-            </span>
-          ))}
-        </div>
-        <div className="grid gap-2">
-          {[
-            ['Facebook', 'คุณเมย์ · สนใจเว็บไซต์ร้านอาหาร', 'New lead', '10:42'],
-            ['LINE', 'บริษัท Green Clinic · ขอใบเสนอราคา', 'Qualified', '10:18'],
-            ['Website Form', 'คุณต้น · แบบฟอร์มขอใบเสนอราคา', 'New lead', '10:31'],
-            ['Facebook', 'North Star Studio · สอบถามแพ็กเกจ', 'Contacted', '09:55'],
-            ['LINE', 'Acme Accounting · ส่งข้อมูลเพิ่มเติม', 'Customer', 'เมื่อวาน'],
-          ].map(([channel, message, status, time]) => (
-            <Link key={message} href="/admin/inbox/demo-conversation" className={`${cardHover} border-2 border-slate-300 p-4`}>
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <span className="border border-slate-400 px-2 py-1 text-[10px] font-bold uppercase tracking-wide">{channel}</span>
-                  <p className="mt-3 font-bold">{message}</p>
-                </div>
-                <span className="text-xs text-slate-500">{time}</span>
+    <div className="min-h-0 flex-1 overflow-y-auto pr-1">
+      <div className="grid gap-2">
+        {inboxMessages.map(([channel, message, status, time]) => (
+          <Link key={message} href="/admin/inbox/demo-conversation" className={`${cardHover} border-2 border-slate-300 p-4`}>
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <span className="border border-slate-400 px-2 py-1 text-[10px] font-bold uppercase tracking-wide">{channel}</span>
+                <p className="mt-3 font-bold">{message}</p>
               </div>
-              <div className="mt-3 flex items-center justify-between text-xs text-slate-500">
-                <span>{status}</span>
-                <span>Assigned: Sales</span>
-              </div>
-            </Link>
-          ))}
+              <span className="text-xs text-slate-500">{time}</span>
+            </div>
+            <div className="mt-3 flex items-center justify-between text-xs text-slate-500">
+              <span>{status}</span>
+              <span>Assigned: Sales</span>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function InboxTemplate() {
+  const [showFilters, setShowFilters] = useState(false);
+  const [showContractDialog, setShowContractDialog] = useState(false);
+
+  return (
+    <div className="grid h-full min-h-0 bg-white lg:grid-cols-[220px_340px_1fr]">
+      <section className="h-full min-h-0 min-w-0">
+        <div className="relative h-full">
+          <WireframeSection
+            title="แชท"
+            action={(
+              <button
+                type="button"
+                onClick={() => setShowFilters((visible) => !visible)}
+                aria-label="เปิดตัวกรองแชท"
+                aria-expanded={showFilters}
+                className={`grid h-9 w-9 place-items-center border-2 transition-colors ${showFilters ? "border-slate-900 bg-slate-900 text-white" : "border-slate-300 bg-white text-slate-700 hover:border-slate-900"}`}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                  <path d="M4 6h16M7 12h10M10 18h4" />
+                </svg>
+              </button>
+            )}
+            className="m-0 flex h-full min-h-0 flex-col border-0 !border-b-0 p-3"
+          >
+            <p className="mb-4 text-xs text-slate-500">รวมทุกช่องทาง</p>
+            <nav className="grid gap-1 text-sm">
+              {['แชททั้งหมด 12', 'แชทของฉัน 4', 'Website Form 6', 'Facebook 3', 'LINE 3', 'จบแชทแล้ว 18'].map((item, index) => <DemoButton key={item} className={`${interact} flex items-center justify-between px-3 py-3 text-left ${index === 0 ? 'border-2 border-slate-900 bg-white font-bold' : 'text-slate-600 hover:bg-slate-50'}`}><span>{item.split(' ')[0]}{item.split(' ')[1] && ` ${item.split(' ')[1]}`}</span><span className="text-xs text-slate-400">{item.match(/\d+$/)?.[0]}</span></DemoButton>)}
+            </nav>
+            <div className="mt-auto border-t border-slate-200 pt-4"><p className="text-xs font-bold uppercase tracking-wide text-slate-400">Team</p><p className="mt-3 text-sm font-bold">Sales / Account</p><p className="mt-1 text-xs text-slate-500">กำลังออนไลน์ 3 คน</p></div>
+          </WireframeSection>
+          {showFilters ? (
+            <div className="absolute right-3 top-16 z-30 grid w-48 gap-2 border-2 border-slate-300 bg-white p-3 shadow-lg">
+              {['All', 'Facebook', 'LINE', 'Website Form', 'Unassigned'].map((filter, index) => (
+                <button
+                  key={filter}
+                  type="button"
+                  className={`border px-3 py-2 text-left text-xs font-bold ${index === 0 ? 'border-slate-900 bg-slate-900 text-white' : 'border-slate-300 bg-white text-slate-600 hover:border-slate-900'}`}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          ) : null}
         </div>
+      </section>
+      <section className="h-full min-h-0">
+      <WireframeSection title="แชททั้งหมด" className="m-0 flex h-full min-h-0 flex-col border-0 !border-b-0 p-3">
+        <InboxMessageList />
       </WireframeSection>
       </section>
 
-      <section className="min-w-0">
-      <WireframeSection title="Conversation and lead profile" className="h-full border-0 p-4">
-        <div className="grid gap-5">
+      <section className="h-full min-h-0 min-w-0">
+      <WireframeSection title="" className="m-0 flex h-full min-h-0 flex-col border-0 !border-b-0 p-4">
+        <div className="flex h-full min-h-0 flex-col gap-5">
           <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-slate-500">Facebook conversation</p>
-              <h3 className="mt-2 text-lg font-bold">คุณเมย์ · สนใจเว็บไซต์ร้านอาหาร</h3>
-            </div>
-            <span className="border-2 border-slate-900 px-3 py-2 text-xs font-bold">New lead</span>
+            <h3 className="text-lg font-bold">คุณเมย์ · สนใจเว็บไซต์ร้านอาหาร</h3>
+            <button
+              type="button"
+              onClick={() => setShowContractDialog(true)}
+              className="border-2 border-slate-900 px-3 py-2 text-xs font-bold transition-colors hover:bg-slate-900 hover:text-white"
+              aria-haspopup="dialog"
+            >
+              New Contract
+            </button>
           </div>
-          <div className="grid gap-3 border-2 border-dashed border-slate-300 bg-slate-50 p-4 text-sm">
+          <div className="min-h-0 flex-1 grid content-start gap-3 overflow-y-auto border-2 border-dashed border-slate-300 bg-slate-50 p-4 text-sm">
             <div className="max-w-[80%] border border-slate-300 bg-white p-3">สวัสดีค่ะ อยากทำเว็บไซต์ร้านอาหาร มีแพ็กเกจแนะนำไหมคะ?</div>
             <div className="ml-auto max-w-[80%] border-2 border-slate-900 bg-white p-3">สวัสดีครับ ทีมงานช่วยแนะนำแพ็กเกจให้ได้ครับ ขอทราบประเภทธุรกิจและเป้าหมายเว็บไซต์เบื้องต้นครับ</div>
           </div>
@@ -618,28 +796,87 @@ function InboxTemplate() {
             <div className="h-12 border-2 border-slate-300 bg-slate-50 px-3 py-3 text-sm text-slate-400">พิมพ์ข้อความตอบกลับ...</div>
             <DemoButton className={`${btnPrimary} px-5 py-2`}>Send</DemoButton>
           </div>
-          <div className="grid gap-4 border-t border-slate-200 pt-5 sm:grid-cols-2">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-slate-500">Lead profile</p>
-              <div className="mt-3 grid gap-2 text-sm text-slate-600">
-                <p>Name: คุณเมย์</p>
-                <p>Source: Facebook / LINE / Website Form</p>
-                <p>Owner: Sales</p>
-                <p>Industry: Restaurant</p>
-              </div>
-            </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wide text-slate-500">Actions</p>
-              <div className="mt-3 grid gap-2">
-                <DemoButton className={`${interact} border border-slate-300 px-3 py-2 text-left text-sm font-bold hover:border-slate-900 hover:bg-slate-50`}>Create Lead</DemoButton>
-                <DemoButton className={`${interact} border border-slate-300 px-3 py-2 text-left text-sm font-bold hover:border-slate-900 hover:bg-slate-50`}>Assign owner</DemoButton>
-                <DemoButton className={`${interact} border border-slate-300 px-3 py-2 text-left text-sm font-bold hover:border-slate-900 hover:bg-slate-50`}>Create quotation</DemoButton>
-              </div>
-            </div>
-          </div>
         </div>
       </WireframeSection>
       </section>
+
+      {showContractDialog ? (
+        <div
+          className="fixed inset-0 z-50 grid place-items-center bg-slate-900/40 p-4"
+          role="presentation"
+          onMouseDown={() => setShowContractDialog(false)}
+        >
+          <div
+            className="max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto border-2 border-slate-900 bg-white p-5 shadow-2xl"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="new-contract-dialog-title"
+            onMouseDown={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wide text-slate-500">Contract</p>
+                <h2 id="new-contract-dialog-title" className="mt-1 text-xl font-bold">New Contract</h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowContractDialog(false)}
+                className="border border-slate-300 px-2 py-1 text-sm font-bold hover:border-slate-900"
+                aria-label="ปิด dialog"
+              >
+                ×
+              </button>
+            </div>
+
+            <form
+              className="mt-5 grid gap-4"
+              onSubmit={(event) => {
+                event.preventDefault();
+                setShowContractDialog(false);
+              }}
+            >
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="grid gap-2 text-sm font-bold">
+                  Company
+                  <input required name="company" placeholder="เช่น Green Clinic" className="h-11 border-2 border-slate-300 px-3 font-normal outline-none focus:border-slate-900" />
+                </label>
+                <label className="grid gap-2 text-sm font-bold">
+                  Contract name
+                  <input required name="contractName" placeholder="เช่น Website Retainer" className="h-11 border-2 border-slate-300 px-3 font-normal outline-none focus:border-slate-900" />
+                </label>
+                <label className="grid gap-2 text-sm font-bold">
+                  Start date
+                  <input required type="date" name="startDate" className="h-11 border-2 border-slate-300 px-3 font-normal outline-none focus:border-slate-900" />
+                </label>
+                <label className="grid gap-2 text-sm font-bold">
+                  End date
+                  <input required type="date" name="endDate" className="h-11 border-2 border-slate-300 px-3 font-normal outline-none focus:border-slate-900" />
+                </label>
+                <label className="grid gap-2 text-sm font-bold">
+                  Contract value
+                  <input required type="number" min="0" name="value" placeholder="0" className="h-11 border-2 border-slate-300 px-3 font-normal outline-none focus:border-slate-900" />
+                </label>
+                <label className="grid gap-2 text-sm font-bold">
+                  Status
+                  <select name="status" defaultValue="Draft" className="h-11 border-2 border-slate-300 bg-white px-3 font-normal outline-none focus:border-slate-900">
+                    <option>Draft</option>
+                    <option>Pending signature</option>
+                    <option>Active</option>
+                  </select>
+                </label>
+              </div>
+              <label className="grid gap-2 text-sm font-bold">
+                Notes
+                <textarea name="notes" rows={3} placeholder="รายละเอียดเพิ่มเติมของสัญญา" className="border-2 border-slate-300 px-3 py-2 font-normal outline-none focus:border-slate-900" />
+              </label>
+              <div className="flex justify-end gap-3 border-t border-slate-200 pt-4">
+                <button type="button" onClick={() => setShowContractDialog(false)} className={`${btnSecondary} px-4 py-2`}>ยกเลิก</button>
+                <button type="submit" className={`${btnPrimary} px-4 py-2`}>Save contract</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

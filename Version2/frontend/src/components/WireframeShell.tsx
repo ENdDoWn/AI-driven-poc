@@ -27,9 +27,9 @@ export function WireframeShell({
 }) {
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900">
-      <div className="flex min-h-screen flex-col lg:flex-row">
+      <div className="flex min-h-screen flex-col lg:h-dvh lg:overflow-hidden lg:flex-row">
         {sidebar ?? (
-          <aside className="w-full border-b-2 border-slate-300 bg-white lg:min-h-screen lg:w-72 lg:border-b-0 lg:border-r-2">
+          <aside className="w-full border-b-2 border-slate-300 bg-white lg:h-dvh lg:max-h-dvh lg:w-72 lg:self-start lg:overflow-y-auto lg:overscroll-contain lg:border-b-0 lg:border-r-2">
             <div className="border-b-2 border-slate-300 p-6">
               <Link href="/" className="text-lg font-bold hover:underline">
                 WOP / UI
@@ -60,7 +60,7 @@ export function WireframeShell({
           </aside>
         )}
 
-        <div className="min-w-0 flex-1">
+        <div className="min-h-0 min-w-0 flex-1 overflow-y-auto">
           <WireframeHeader area={area} title={title} role={role} fullBleed={fullBleed}>
             {children}
           </WireframeHeader>
@@ -84,7 +84,7 @@ export function WireframeHeader({
   children: ReactNode;
 }) {
   return (
-    <>
+    <div className={fullBleed ? "grid h-full min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)]" : "flex flex-col"}>
       <header className="flex flex-col gap-4 border-b-2 border-slate-300 bg-white px-6 py-5 sm:flex-row sm:items-center sm:justify-between lg:px-10">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500">{area}</p>
@@ -100,17 +100,17 @@ export function WireframeHeader({
           <span className="border-2 border-slate-900 px-3 py-2 text-sm font-bold">{role ?? area}</span>
         </div>
       </header>
-      <main className={fullBleed ? "p-0" : "px-6 py-8 lg:px-10"}>{children}</main>
-    </>
+      <main className={fullBleed ? "flex-1 min-h-0 overflow-y-auto p-0" : "px-3 py-4 lg:px-6"}>{children}</main>
+    </div>
   );
 }
 
 export function WireframeMetric({ label, value, detail }: { label: string; value: string; detail: string }) {
   return (
-    <div className="border-2 border-slate-300 bg-white p-5">
+    <div className="border-2 border-slate-300 bg-white p-4">
       <p className="text-xs font-bold uppercase tracking-wide text-slate-500">{label}</p>
-      <p className="mt-4 text-3xl font-bold">{value}</p>
-      <p className="mt-2 text-sm text-slate-500">{detail}</p>
+      <p className="mt-3 text-2xl font-bold">{value}</p>
+      <p className="mt-1 text-xs text-slate-500">{detail}</p>
     </div>
   );
 }
@@ -118,10 +118,12 @@ export function WireframeMetric({ label, value, detail }: { label: string; value
 export function WireframeSection({ title, children, className = "", action }: { title: string; children: ReactNode; className?: string; action?: ReactNode }) {
   return (
     <section className={`border-2 border-slate-300 bg-white p-5 ${className}`}>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-3">
-        <h2 className="font-bold">{title}</h2>
-        {action}
-      </div>
+      {title ? (
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-3">
+          <h2 className="font-bold">{title}</h2>
+          {action}
+        </div>
+      ) : null}
       {children}
     </section>
   );
